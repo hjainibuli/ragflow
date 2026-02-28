@@ -24,6 +24,7 @@ export function HomeCard({
 }: IProps) {
   return (
     <Card
+      className="card-item"
       onClick={() => {
         // navigateToSearch(data?.id);
         onClick?.();

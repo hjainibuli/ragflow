@@ -64,7 +64,7 @@ export function Applications() {
   return (
     <section className="mt-12">
       <div className="flex justify-between items-center mb-5">
-        <h2 className="text-2xl font-semibold flex gap-2.5">
+        <h2 className="section-title text-2xl font-semibold flex gap-2.5">
           <HomeIcon
             name={`${IconMap[val as keyof typeof IconMap]}`}
             width={'32'}

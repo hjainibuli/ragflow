@@ -26,7 +26,7 @@ export function Datasets() {
 
   return (
     <section>
-      <h2 className="text-2xl font-semibold mb-6 flex gap-2.5 items-center">
+      <h2 className="section-title text-2xl font-semibold mb-6 flex gap-2.5 items-center">
         {/* <IconFont name="data" className="size-8"></IconFont> */}
         <HomeIcon name="datasets" width={'32'} />
         {t('header.dataset')}
@@ -40,15 +40,13 @@ export function Datasets() {
           <>
             {kbs?.length > 0 && (
               <CardSineLineContainer>
-                {kbs
-                  ?.slice(0, 6)
-                  .map((dataset) => (
-                    <DatasetCard
-                      key={dataset.id}
-                      dataset={dataset}
-                      showDatasetRenameModal={showDatasetRenameModal}
-                    ></DatasetCard>
-                  ))}
+                {kbs?.slice(0, 6).map((dataset) => (
+                  <DatasetCard
+                    key={dataset.id}
+                    dataset={dataset}
+                    showDatasetRenameModal={showDatasetRenameModal}
+                  ></DatasetCard>
+                ))}
                 {
                   <SeeAllAppCard
                     click={() => navigateToDatasetList({ isCreate: false })}

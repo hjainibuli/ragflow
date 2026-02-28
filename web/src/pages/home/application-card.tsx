@@ -20,7 +20,7 @@ export function ApplicationCard({
   moreDropdown,
 }: ApplicationCardProps) {
   return (
-    <Card className="w-[264px]" onClick={onClick}>
+    <Card className="card-item w-[264px]" onClick={onClick}>
       <CardContent className="p-2.5  group flex justify-between w-full">
         <div className="flex items-center gap-2.5 w-full">
           <RAGFlowAvatar
@@ -49,7 +49,10 @@ export type SeeAllAppCardProps = {
 
 export function SeeAllAppCard({ click }: SeeAllAppCardProps) {
   return (
-    <Card className="w-full min-h-[76px] cursor-pointer" onClick={click}>
+    <Card
+      className="card-item w-full min-h-[76px] cursor-pointer"
+      onClick={click}
+    >
       <CardContent className="p-2.5 pt-1 w-full h-full flex items-center justify-center gap-1.5 text-text-secondary">
         {t('common.seeAll')} <ChevronRight className="size-4" />
       </CardContent>

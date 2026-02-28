@@ -1,13 +1,5 @@
-import { IconFontFill } from '@/components/icon-font';
 import { RAGFlowAvatar } from '@/components/ragflow-avatar';
 import { useTheme } from '@/components/theme-provider';
-import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { Segmented, SegmentedValue } from '@/components/ui/segmented';
 import { LanguageList, LanguageMap, ThemeEnum } from '@/constants/common';
 import { useChangeLanguage } from '@/hooks/logic-hooks';
@@ -15,18 +7,13 @@ import { useNavigatePage } from '@/hooks/logic-hooks/navigate-hooks';
 import { useNavigateWithFromState } from '@/hooks/route-hook';
 import { useFetchUserInfo } from '@/hooks/use-user-setting-request';
 import { Routes } from '@/routes';
-import { camelCase } from 'lodash';
 import {
-  ChevronDown,
-  CircleHelp,
   Cpu,
   File,
   House,
   Library,
   MessageSquareText,
-  Moon,
   Search,
-  Sun,
 } from 'lucide-react';
 import React, { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -128,14 +115,15 @@ export function Header() {
   }, [pathname]);
 
   return (
-    <section className="py-5 px-10 flex justify-between items-center ">
+    <section className="navbar-container py-5 px-10 flex justify-between items-center ">
       <div className="flex items-center gap-4">
         <img
-          src={'/logo.svg'}
+          src={'/logo.png'}
           alt="logo"
           className="size-10 mr-[12] cursor-pointer"
           onClick={handleLogoClick}
         />
+        {/* <div>XXX智能决策系统</div> */}
       </div>
       <Segmented
         rounded="xxxl"
@@ -147,7 +135,7 @@ export function Header() {
         activeClassName="text-bg-base bg-metallic-gradient border-b-[#00BEB4] border-b-2"
       ></Segmented>
       <div className="flex items-center gap-5 text-text-badge">
-        <a
+        {/* <a
           target="_blank"
           href="https://discord.com/invite/NjYzJD3GM3"
           rel="noreferrer"
@@ -160,8 +148,8 @@ export function Header() {
           rel="noreferrer"
         >
           <IconFontFill name="GitHub"></IconFontFill>
-        </a>
-        <DropdownMenu>
+        </a> */}
+        {/* <DropdownMenu>
           <DropdownMenuTrigger>
             <div className="flex items-center gap-1">
               {t(`common.${camelCase(language)}`)}
@@ -175,13 +163,13 @@ export function Header() {
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
-        </DropdownMenu>
-        <Button variant={'ghost'} onClick={handleDocHelpCLick}>
+        </DropdownMenu> */}
+        {/* <Button variant={'ghost'} onClick={handleDocHelpCLick}>
           <CircleHelp />
-        </Button>
-        <Button variant={'ghost'} onClick={onThemeClick}>
+        </Button> */}
+        {/* <Button variant={'ghost'} onClick={onThemeClick}>
           {theme === 'light' ? <Sun /> : <Moon />}
-        </Button>
+        </Button> */}
         <BellButton></BellButton>
         <div className="relative">
           <RAGFlowAvatar

@@ -44,7 +44,7 @@ export function SeeAllCard() {
 
   return (
     <Card
-      className="w-full flex-none h-full cursor-pointer"
+      className="card-item w-full flex-none h-full cursor-pointer"
       onClick={navigateToDatasetList}
     >
       <CardContent className="p-2.5 pt-1 w-full h-full flex items-center justify-center gap-1.5 text-text-secondary">

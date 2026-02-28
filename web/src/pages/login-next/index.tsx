@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 
+import { HeroWaves } from '@/components/hero-waves';
 import Spotlight from '@/components/spotlight';
 import { Button, ButtonLoading } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -132,44 +133,42 @@ const Login = () => {
 
   return (
     <>
-      <Spotlight opcity={0.4} coverage={60} color={'rgb(128, 255, 248)'} />
+      <Spotlight opcity={0.4} coverage={60} color={'rgba(222, 41, 16, 0.9)'} />
       <Spotlight
         opcity={0.3}
         coverage={12}
         X={'10%'}
         Y={'-10%'}
-        color={'rgb(128, 255, 248)'}
+        color={'rgba(222, 41, 16, 0.75)'}
       />
       <Spotlight
         opcity={0.3}
         coverage={12}
         X={'90%'}
         Y={'-10%'}
-        color={'rgb(128, 255, 248)'}
+        color={'rgba(222, 41, 16, 0.75)'}
       />
-      <div className=" h-[inherit] relative overflow-auto">
+      <div className="patriotic-login flex h-screen min-h-0 flex-col overflow-hidden">
         <BgSvg isPaused />
 
-        <div className="absolute top-3 flex flex-col items-center mb-12 w-full text-text-primary">
-          <div className="flex items-center mb-4 w-full pl-10 pt-10 ">
+        <div className="flex shrink-0 flex-col items-center pt-6 pb-4 w-full text-text-primary overflow-visible">
+          <div className="flex items-center mb-2 w-full pl-10">
             <div className="w-12 h-12 p-2 rounded-lg flex items-center justify-center mr-3">
               <img
-                src={'/logo.svg'}
+                src={'/logo.png'}
                 alt="logo"
                 className="size-8 mr-[12] cursor-pointer"
               />
             </div>
-            <div className="text-xl font-bold self-center">RAGFlow</div>
+            <div className="welcome-title text-xl font-bold self-center">
+              牢记初心，不忘使命
+            </div>
           </div>
-          <h1 className="text-[36px] font-medium  text-center mb-2">
+          <h1 className="welcome-title text-[36px] font-medium text-center mt-6">
             {t('title')}
           </h1>
-          {/* border border-accent-primary rounded-full */}
-          {/* <div className="mt-4 px-6 py-1 text-sm font-medium text-cyan-600  hover:bg-cyan-50 transition-colors duration-200 border-glow relative overflow-hidden">
-            {t('start')}
-          </div> */}
         </div>
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-[1050px] px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 flex flex-1 min-h-0 flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
           {/* Logo and Header */}
 
           {/* Login Form */}
@@ -180,7 +179,7 @@ const Login = () => {
                   {title === 'login' ? t('loginTitle') : t('signUpTitle')}
                 </h2>
               </div>
-              <div className=" w-full max-w-[540px] bg-bg-component backdrop-blur-sm rounded-2xl shadow-xl pt-14 pl-10 pr-10 pb-2 border border-border-button ">
+              <div className="w-full max-w-[540px] patriotic-login-card backdrop-blur-sm rounded-2xl shadow-xl pt-14 pl-10 pr-10 pb-2">
                 <Form {...form}>
                   <form
                     className="flex flex-col gap-8 text-text-primary "
@@ -291,7 +290,7 @@ const Login = () => {
                     <ButtonLoading
                       type="submit"
                       loading={loading}
-                      className="bg-metallic-gradient border-b-[#00BEB4] border-b-2 hover:bg-metallic-gradient hover:border-b-[#02bcdd] w-full my-8"
+                      className="patriotic-primary-btn w-full my-8"
                     >
                       {title === 'login' ? t('login') : t('continue')}
                     </ButtonLoading>
@@ -327,7 +326,7 @@ const Login = () => {
                       <Button
                         variant={'transparent'}
                         onClick={changeTitle}
-                        className="text-accent-primary/90 hover:text-accent-primary hover:bg-transparent font-medium border-none transition-colors duration-200"
+                        className="patriotic-link-button"
                       >
                         {t('signUp')}
                       </Button>
@@ -341,7 +340,7 @@ const Login = () => {
                       <Button
                         variant={'transparent'}
                         onClick={changeTitle}
-                        className="text-accent-primary/90 hover:text-accent-primary hover:bg-transparent font-medium border-none transition-colors duration-200"
+                        className="patriotic-link-button"
                       >
                         {t('login')}
                       </Button>
@@ -352,6 +351,7 @@ const Login = () => {
             </div>
           </FlipCard3D>
         </div>
+        <HeroWaves />
       </div>
     </>
   );

@@ -141,7 +141,9 @@ export function Sessions({ handleConversationCardClick }: SessionProps) {
       </section>
       <div className="flex justify-between items-center mb-4 pt-10">
         <div className="flex items-center gap-3">
-          <span className="text-base font-bold">{t('chat.conversations')}</span>
+          <span className="section-title text-base font-bold inline-block pb-1">
+            {t('chat.conversations')}
+          </span>
           <span className="text-text-secondary text-xs">
             {conversationList.length}
           </span>
@@ -217,7 +219,7 @@ export function Sessions({ handleConversationCardClick }: SessionProps) {
           <Card
             key={x.id}
             onClick={handleCardClick(x.id, x.is_new)}
-            className={cn('cursor-pointer bg-transparent relative', {
+            className={cn('card-item cursor-pointer bg-transparent relative', {
               'bg-bg-card': conversationId === x.id && !selectionMode,
             })}
           >
