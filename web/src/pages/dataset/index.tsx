@@ -1,3 +1,4 @@
+import { HeroWaves } from '@/components/hero-waves';
 import { PageHeader } from '@/components/page-header';
 import {
   Breadcrumb,
@@ -21,7 +22,7 @@ export default function DatasetWrapper() {
 
   return (
     <KnowledgeBaseProvider knowledgeBase={data} loading={loading}>
-      <section className="flex h-full flex-col w-full">
+      <section className="patriotic-app flex h-full min-h-screen flex-col w-full">
         <PageHeader>
           <Breadcrumb>
             <BreadcrumbList>
@@ -45,6 +46,7 @@ export default function DatasetWrapper() {
             <Outlet />
           </div>
         </div>
+        <HeroWaves />
       </section>
     </KnowledgeBaseProvider>
   );

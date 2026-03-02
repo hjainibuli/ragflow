@@ -61,7 +61,7 @@ export function SideBar({ refreshCount }: PropType) {
   }, [t, routerData]);
 
   return (
-    <aside className="relative p-5 space-y-8">
+    <aside className="patriotic-dataset-sidebar relative p-5 space-y-8">
       <div className="flex gap-2.5 max-w-[200px] items-center">
         <RAGFlowAvatar
           avatar={data.avatar}

@@ -72,12 +72,18 @@
   z-index: 0;
 }
 
-/* Top navigation / header bar: transparent so full-page background shows through */
+/* Main app top nav + Dataset breadcrumb header: transparent so full-page background shows */
 .patriotic-app .navbar-container,
-.patriotic-app section:first-of-type {
-  // background-color: rgba(0, 0, 0, 0.12);
+.patriotic-app > header {
+  background-color: rgba(0, 0, 0, 0.12);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(8px);
+}
+
+/* Dataset sidebar: subtle panel so it reads against the background */
+.patriotic-app .patriotic-dataset-sidebar {
+  background-color: rgba(0, 0, 0, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* Segmented nav: active item = red background, gold text */

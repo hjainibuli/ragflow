@@ -8,7 +8,7 @@ type TopTitleProps = {
 export function TopTitle({ title, description }: TopTitleProps) {
   return (
     <div className="pb-5">
-      <div className="text-2xl font-semibold">{title}</div>
+      <div className="section-title text-2xl font-semibold">{title}</div>
       <p className="text-text-secondary pt-2">{description}</p>
     </div>
   );

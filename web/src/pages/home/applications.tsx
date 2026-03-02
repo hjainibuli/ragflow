@@ -75,9 +75,10 @@ export function Applications() {
           options={options}
           value={val}
           onChange={handleChange}
+          rounded="xxxl"
+          sizeType="xl"
           buttonSize="xl"
-          // className="bg-bg-card border border-border-button rounded-lg"
-          // activeClassName="bg-text-primary border-none rounded-lg"
+          activeClassName="text-bg-base bg-metallic-gradient border-b-[#00BEB4] border-b-2"
         ></Segmented>
       </div>
       {/* <div className="flex flex-wrap gap-4"> */}

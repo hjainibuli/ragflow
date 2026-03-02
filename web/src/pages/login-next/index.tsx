@@ -168,21 +168,20 @@ const Login = () => {
             {t('title')}
           </h1>
         </div>
-        <div className="relative z-10 flex flex-1 min-h-0 flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 flex flex-col items-center justify-center px-4 py-20 sm:px-6 lg:px-8">
           {/* Logo and Header */}
 
           {/* Login Form */}
           <FlipCard3D isLoginPage={isLoginPage}>
             <div className="flex flex-col items-center justify-center w-full">
-              <div className="text-center mb-8">
-                <h2 className="text-xl font-semibold text-text-primary">
-                  {title === 'login' ? t('loginTitle') : t('signUpTitle')}
-                </h2>
-              </div>
-              <div className="w-full max-w-[540px] patriotic-login-card backdrop-blur-sm rounded-2xl shadow-xl pt-14 pl-10 pr-10 pb-2">
+              <div className="w-full max-w-[540px] patriotic-login-card backdrop-blur-sm rounded-2xl shadow-xl pt-12 pl-10 pr-10 pb-2 relative">
+                {/* logo 悬浮在卡片顶部边框中心 */}
+                <div className="login-card-logo-wrapper">
+                  <img src="/logo.png" alt="logo" className="login-card-logo" />
+                </div>
                 <Form {...form}>
                   <form
-                    className="flex flex-col gap-8 text-text-primary "
+                    className="flex flex-col gap-5 text-text-primary "
                     onSubmit={form.handleSubmit(onCheck)}
                   >
                     <FormField
@@ -190,7 +189,15 @@ const Login = () => {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel required>{t('emailLabel')}</FormLabel>
+                          <div className="login-account-title">
+                            <div className="text-center mb-4">
+                              <h2 className="text-xl font-semibold text-text-primary">
+                                {title === 'login'
+                                  ? t('loginTitle')
+                                  : t('signUpTitle')}
+                              </h2>
+                            </div>
+                          </div>
                           <FormControl>
                             <Input
                               placeholder={t('emailPlaceholder')}
@@ -290,7 +297,7 @@ const Login = () => {
                     <ButtonLoading
                       type="submit"
                       loading={loading}
-                      className="patriotic-primary-btn w-full my-8"
+                      className="patriotic-primary-btn w-full my-4"
                     >
                       {title === 'login' ? t('login') : t('continue')}
                     </ButtonLoading>
@@ -320,7 +327,7 @@ const Login = () => {
                 </Form>
 
                 {title === 'login' && registerEnabled && (
-                  <div className="mt-10 text-right">
+                  <div className="mt-5 text-right">
                     <p className="text-text-disabled text-sm">
                       {t('signInTip')}
                       <Button
@@ -334,7 +341,7 @@ const Login = () => {
                   </div>
                 )}
                 {title === 'register' && (
-                  <div className="mt-10 text-right">
+                  <div className="mt-5 text-right">
                     <p className="text-text-disabled text-sm">
                       {t('signUpTip')}
                       <Button
