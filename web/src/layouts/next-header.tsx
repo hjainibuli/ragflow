@@ -11,6 +11,7 @@ import {
   Cpu,
   File,
   House,
+  Image,
   Library,
   MessageSquareText,
   Search,
@@ -31,6 +32,7 @@ const PathMap = {
   [Routes.Agents]: [Routes.Agents],
   [Routes.Memories]: [Routes.Memories, Routes.Memory, Routes.MemoryMessage],
   [Routes.Files]: [Routes.Files],
+  [Routes.TextToImage]: [Routes.TextToImage],
 } as const;
 
 export function Header() {
@@ -68,6 +70,7 @@ export function Header() {
       { path: Routes.Agents, name: t('header.flow'), icon: Cpu },
       { path: Routes.Memories, name: t('header.memories'), icon: Cpu },
       { path: Routes.Files, name: t('header.fileManager'), icon: File },
+      { path: Routes.TextToImage, name: t('header.textToImage'), icon: Image },
     ],
     [t],
   );

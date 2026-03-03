@@ -61,6 +61,7 @@ export enum Routes {
   AgentShare = '/agent/share',
   ChatShare = `${Chats}/share`,
   ChatWidget = `${Chats}/widget`,
+  TextToImage = '/text-to-image',
   UserSetting = '/user-setting',
   DataSetOverview = '/dataset-overview',
   DataSetSetting = '/dataset-setting',
@@ -190,6 +191,17 @@ const routeConfigOptions = [
     path: Routes.Chat + '/:id',
     layout: false,
     Component: () => import('@/pages/next-chats/chat'),
+  },
+  {
+    path: Routes.TextToImage,
+    layout: false,
+    Component: () => import('@/layouts/next'),
+    children: [
+      {
+        index: true,
+        Component: () => import('@/pages/text-to-image'),
+      },
+    ],
   },
   {
     path: Routes.Searches,

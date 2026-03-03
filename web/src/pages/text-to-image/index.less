@@ -1,0 +1,38 @@
+//////////////////////////////////////////////////////////////////////////
+// 文生图 - 红色爱国主题（仅能设置 iframe 外框与页面背景，iframe 内部为 Dify 原样）
+
+.patriotic-t2i {
+  --patriotic-bg-dark: #2b0b0b;
+  --patriotic-bg-card: rgba(82, 15, 15, 0.6);
+  --patriotic-color-primary: #de2910;
+  --patriotic-border-color: #6e1818;
+
+  background: linear-gradient(
+    180deg,
+    var(--patriotic-bg-dark) 0%,
+    #520f0f 50%,
+    var(--patriotic-bg-dark) 100%
+  ) !important;
+  min-height: 100%;
+  color: #fff;
+  padding: 24px;
+}
+
+.patriotic-t2i-card {
+  flex: 1;
+  min-height: 700px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--patriotic-bg-card);
+  border: 1px solid var(--patriotic-border-color);
+  border-left: 4px solid var(--patriotic-color-primary);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.patriotic-t2i-iframe {
+  flex: 1;
+  min-height: 700px;
+}

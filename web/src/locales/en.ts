@@ -104,6 +104,7 @@ export default {
       welcome: 'Welcome to',
       dataset: 'Dataset',
       memories: 'Memory',
+      textToImage: 'Text to Image',
     },
     memories: {
       llmTooltip:
