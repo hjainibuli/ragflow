@@ -1,5 +1,6 @@
 import { RAGFlowAvatar } from '@/components/ragflow-avatar';
 import { useTheme } from '@/components/theme-provider';
+import { Button } from '@/components/ui/button';
 import { Segmented, SegmentedValue } from '@/components/ui/segmented';
 import { LanguageList, LanguageMap, ThemeEnum } from '@/constants/common';
 import { useChangeLanguage } from '@/hooks/logic-hooks';
@@ -14,7 +15,9 @@ import {
   Image,
   Library,
   MessageSquareText,
+  Moon,
   Search,
+  Sun,
 } from 'lucide-react';
 import React, { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -126,7 +129,7 @@ export function Header() {
           className="size-10 mr-[12] cursor-pointer"
           onClick={handleLogoClick}
         />
-        {/* <div>XXX智能决策系统</div> */}
+        <div className="header-welcome">欢迎来到，XXX 智能决策系统</div>
       </div>
       <Segmented
         rounded="xxxl"
@@ -170,9 +173,22 @@ export function Header() {
         {/* <Button variant={'ghost'} onClick={handleDocHelpCLick}>
           <CircleHelp />
         </Button> */}
-        {/* <Button variant={'ghost'} onClick={onThemeClick}>
-          {theme === 'light' ? <Sun /> : <Moon />}
-        </Button> */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onThemeClick}
+          aria-label={
+            theme === ThemeEnum.Light
+              ? 'Switch to dark mode'
+              : 'Switch to light mode'
+          }
+        >
+          {theme === ThemeEnum.Light ? (
+            <Moon className="size-5" />
+          ) : (
+            <Sun className="size-5" />
+          )}
+        </Button>
         <BellButton></BellButton>
         <div className="relative">
           <RAGFlowAvatar

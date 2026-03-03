@@ -87,8 +87,9 @@ export default function Files() {
   );
 
   return (
-    <section className="p-8">
+    <section className="patriotic-files-list p-8">
       <ListFilterBar
+        className="files-filter-bar"
         leftPanel={leftPanel}
         searchString={searchString}
         onSearchChange={handleInputChange}

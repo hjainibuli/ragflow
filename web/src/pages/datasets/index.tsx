@@ -69,7 +69,7 @@ export default function Datasets() {
   }, [isCreate, showModal, searchUrl, setSearchUrl]);
   return (
     <>
-      <section className="py-4 flex-1 flex flex-col">
+      <section className="patriotic-datasets-list py-4 flex-1 flex flex-col">
         {(!kbs?.length || kbs?.length <= 0) && !searchString && (
           <div className="flex w-full items-center justify-center h-[calc(100vh-164px)]">
             <EmptyAppCard
@@ -91,7 +91,7 @@ export default function Datasets() {
               value={filterValue}
               filters={owners}
               onChange={handleFilterSubmit}
-              className="px-8"
+              className="px-8 datasets-filter-bar"
               icon={'datasets'}
             >
               <Button onClick={showModal}>

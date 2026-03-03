@@ -258,7 +258,7 @@ export default function DatasetSettings() {
   };
 
   return (
-    <section className="p-5 h-full flex flex-col">
+    <section className="patriotic-dataset-setting p-5 h-full flex flex-col">
       <TopTitle
         title={t('knowledgeDetails.configuration')}
         description={t('knowledgeConfiguration.titleDescription')}
@@ -273,7 +273,7 @@ export default function DatasetSettings() {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 ">
               <div className="w-[768px] h-[calc(100vh-240px)] pr-1 overflow-y-auto scrollbar-auto">
-                <MainContainer className="text-text-secondary">
+                <MainContainer className="dataset-setting-main text-text-secondary">
                   <div className="text-base font-medium text-text-primary">
                     {t('knowledgeConfiguration.baseInfo')}
                   </div>

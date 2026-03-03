@@ -49,7 +49,7 @@ export default function ChatList() {
   }, [isCreate, handleShowCreateModal, searchParams, setSearchParams]);
 
   return (
-    <section className="flex flex-col w-full flex-1">
+    <section className="patriotic-chat-list flex flex-col w-full flex-1">
       {data.dialogs?.length <= 0 && !searchString && (
         <div className="flex w-full items-center justify-center h-[calc(100vh-164px)]">
           <EmptyAppCard
@@ -66,6 +66,7 @@ export default function ChatList() {
         <>
           <div className="px-8 pt-8">
             <ListFilterBar
+              className="chat-list-filter-bar"
               title={t('chat.chatApps')}
               icon="chats"
               onSearchChange={handleInputChange}

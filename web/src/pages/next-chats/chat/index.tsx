@@ -23,7 +23,7 @@ import { IClientConversation } from '@/interfaces/database/chat';
 import { cn } from '@/lib/utils';
 import { useMount } from 'ahooks';
 import { isEmpty } from 'lodash';
-import { ArrowUpRight, LogOut, Send } from 'lucide-react';
+import { ArrowUpRight, LogOut, Settings } from 'lucide-react';
 import { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
@@ -31,6 +31,7 @@ import { useHandleClickConversationCard } from '../hooks/use-click-card';
 import { ChatSettings } from './app-settings/chat-settings';
 import { MultipleChatBox } from './chat-box/multiple-chat-box';
 import { SingleChatBox } from './chat-box/single-chat-box';
+import './chat.less';
 import { Sessions } from './sessions';
 import { useAddChatBox } from './use-add-box';
 import { useSwitchDebugMode } from './use-switch-debug-mode';
@@ -42,6 +43,7 @@ export default function Chat() {
   const { t } = useTranslation();
   const [currentConversation, setCurrentConversation] =
     useState<IClientConversation>({} as IClientConversation);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   const { fetchConversationManually } = useFetchConversationManually();
 
@@ -89,7 +91,7 @@ export default function Chat() {
 
   if (isDebugMode) {
     return (
-      <section className="pt-14 h-[100vh] pb-24">
+      <section className="patriotic-chat pt-14 h-[100vh] pb-24">
         <div className="flex items-center justify-between px-10 pb-5">
           <span className="text-2xl">
             {t('chat.multipleModels')} ({chatBoxIds.length}/3)
@@ -111,7 +113,7 @@ export default function Chat() {
   }
 
   return (
-    <section className="h-full flex flex-col">
+    <section className="patriotic-chat h-full flex flex-col min-h-0">
       <PageHeader>
         <Breadcrumb>
           <BreadcrumbList>
@@ -126,38 +128,66 @@ export default function Chat() {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <Button onClick={showEmbedModal}>
+        {/* <Button onClick={showEmbedModal}>
           <Send />
           {t('common.embedIntoSite')}
-        </Button>
+        </Button> */}
       </PageHeader>
-      <div className="flex flex-1 min-h-0 pb-9">
-        <Sessions handleConversationCardClick={handleSessionClick}></Sessions>
+      <div className="flex flex-1 min-h-0 pb-9 justify-center mt-5">
+        <div className="flex flex-1 min-h-0 w-full max-w-[1800px] min-w-0 mx-auto">
+          <div className="patriotic-chat-sessions">
+            <Sessions
+              handleConversationCardClick={handleSessionClick}
+            ></Sessions>
+          </div>
 
-        <Card className="flex-1 min-w-0 bg-transparent border-none shadow-none h-full">
-          <CardContent className="flex p-0 h-full">
-            <Card className="flex flex-col flex-1 bg-transparent min-w-0">
-              <CardHeader
-                className={cn('p-5', { 'border-b': hasSingleChatBox })}
-              >
-                <CardTitle className="flex justify-between items-center text-base">
-                  <div className="truncate">{currentConversationName}</div>
-                  <Button variant={'ghost'} onClick={switchDebugMode}>
-                    <ArrowUpRight /> {t('chat.multipleModels')}
-                  </Button>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex-1 p-0 min-h-0">
-                <SingleChatBox
-                  controller={controller}
-                  stopOutputMessage={stopOutputMessage}
-                  conversation={currentConversation}
-                ></SingleChatBox>
-              </CardContent>
-            </Card>
-            <ChatSettings hasSingleChatBox={hasSingleChatBox}></ChatSettings>
-          </CardContent>
-        </Card>
+          <Card className="flex-1 min-w-0 bg-transparent border-none shadow-none h-full">
+            <CardContent className="flex p-0 h-full">
+              <Card className="flex flex-col flex-1 patriotic-chat-center min-w-0">
+                <CardHeader
+                  className={cn('p-5', { 'border-b': hasSingleChatBox })}
+                >
+                  <CardTitle className="flex justify-between items-center text-base">
+                    <div className="truncate">{currentConversationName}</div>
+                    <div className="flex items-center gap-2 chat-header-actions">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="chat-header-action"
+                        onClick={switchDebugMode}
+                      >
+                        <ArrowUpRight className="size-4" />
+                        {t('chat.multipleModels')}
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="chat-header-action"
+                        onClick={() => setSettingsOpen((v) => !v)}
+                        disabled={!hasSingleChatBox}
+                        title={t('chat.chatSetting')}
+                      >
+                        <Settings className="size-4" />
+                      </Button>
+                    </div>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="flex-1 p-0 min-h-0">
+                  <SingleChatBox
+                    controller={controller}
+                    stopOutputMessage={stopOutputMessage}
+                    conversation={currentConversation}
+                  ></SingleChatBox>
+                </CardContent>
+              </Card>
+              <ChatSettings
+                hasSingleChatBox={hasSingleChatBox}
+                open={settingsOpen}
+                onToggle={() => setSettingsOpen((v) => !v)}
+              />
+            </CardContent>
+          </Card>
+        </div>
       </div>
       {embedVisible && (
         <EmbedDialog

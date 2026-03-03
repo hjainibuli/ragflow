@@ -21,8 +21,8 @@ export default function RetrievalTesting() {
   const [count] = useState(1);
 
   return (
-    <div className="p-5">
-      <section className="flex justify-between items-center">
+    <div className="patriotic-dataset-testing p-5 h-full flex flex-col">
+      <section className="flex justify-between items-center mb-4">
         <TopTitle
           title={t('knowledgeDetails.retrievalTesting')}
           description={t('knowledgeDetails.testingDescription')}
@@ -30,8 +30,8 @@ export default function RetrievalTesting() {
         {/* <Button>Save as Preset</Button> */}
       </section>
       {count === 1 ? (
-        <section className="flex divide-x h-full">
-          <div className="p-4 flex-1">
+        <section className="testing-layout flex gap-6 flex-1 min-h-0">
+          <div className="testing-form-panel p-4 flex-1 min-h-0 flex flex-col">
             <div className="flex justify-between pb-2.5">
               <span className="text-text-primary font-semibold text-2xl">
                 {t('knowledgeDetails.testSetting')}
@@ -48,19 +48,21 @@ export default function RetrievalTesting() {
               ></TestingForm>
             </div>
           </div>
-          <TestingResult
-            data={data}
-            page={page}
-            loading={loading}
-            pageSize={pageSize}
-            filterValue={filterValue}
-            handleFilterSubmit={handleFilterSubmit}
-            onPaginationChange={onPaginationChange}
-          ></TestingResult>
+          <div className="testing-result-panel flex-1 min-h-0">
+            <TestingResult
+              data={data}
+              page={page}
+              loading={loading}
+              pageSize={pageSize}
+              filterValue={filterValue}
+              handleFilterSubmit={handleFilterSubmit}
+              onPaginationChange={onPaginationChange}
+            ></TestingResult>
+          </div>
         </section>
       ) : (
-        <section className="flex gap-2">
-          <div className="flex-1">
+        <section className="testing-layout flex gap-4 flex-1 min-h-0">
+          <div className="testing-form-panel flex-1 min-h-0 flex flex-col">
             <TestingForm
               loading={loading}
               setValues={setValues}
@@ -76,7 +78,7 @@ export default function RetrievalTesting() {
               onPaginationChange={onPaginationChange}
             ></TestingResult>
           </div>
-          <div className="flex-1">
+          <div className="testing-form-panel flex-1 min-h-0 flex flex-col">
             <TestingForm
               loading={loading}
               setValues={setValues}

@@ -1,0 +1,381 @@
+//////////////////////////////////////////////////////////////////////////
+// 对话页红色爱国主题（与 login-next 一致）
+
+.patriotic-chat {
+  --patriotic-bg-dark: #2b0b0b;
+  --patriotic-bg-card: rgba(82, 15, 15, 0.6);
+  --patriotic-bg-card-hover: rgba(120, 20, 20, 0.8);
+  --patriotic-color-primary: #de2910;
+  --patriotic-color-accent: #ffd700;
+  --patriotic-color-accent-dim: #d4af37;
+  --patriotic-text-main: #ffffff;
+  --patriotic-text-secondary: #ffecec;
+  --patriotic-border-color: #6e1818;
+  --patriotic-border-gold: #b8860b;
+
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.08) 0%,
+      transparent 45%,
+      rgba(0, 0, 0, 0.12) 100%
+    ),
+    url('/login-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100%;
+  color: var(--patriotic-text-main);
+
+  /* 页面头部 */
+  header {
+    background: var(--patriotic-bg-card) !important;
+    border-bottom: 1px solid var(--patriotic-border-color);
+    color: var(--patriotic-text-main);
+  }
+  header a,
+  header button {
+    color: var(--patriotic-text-main);
+  }
+  header a:hover,
+  header button:hover {
+    color: var(--patriotic-color-accent);
+  }
+  a {
+    color: var(--patriotic-color-accent);
+  }
+  a:hover {
+    color: var(--patriotic-text-main);
+  }
+
+  /* 对话页内滚动条 - 红色爱国主题，细窄圆角 */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(110, 24, 24, 0.8);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--patriotic-color-primary);
+  }
+  ::-webkit-scrollbar-thumb:active {
+    background: var(--patriotic-color-accent-dim);
+  }
+}
+
+/* 左侧会话列表 - 增强层次感，支持内部滚动 */
+.patriotic-chat-sessions {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(82, 15, 15, 0.85) 0%,
+    rgba(66, 12, 12, 0.75) 100%
+  );
+  border-right: 1px solid var(--patriotic-border-color);
+  /* 移除左侧粗边框和整体阴影，仅保留背景与右侧分割线 */
+
+  /* 标题区与列表区分隔 */
+  .section-title {
+    color: var(--patriotic-color-accent);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+  .pt-10.mb-4 {
+    border-bottom: 1px solid rgba(110, 24, 24, 0.5);
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .text-text-secondary {
+    color: var(--patriotic-text-secondary) !important;
+  }
+
+  /* 会话卡片 - 立体层次 */
+  .card-item {
+    border: 1px solid rgba(110, 24, 24, 0.6);
+    border-radius: 10px;
+    color: var(--patriotic-text-main);
+    background: rgba(0, 0, 0, 0.2) !important;
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    transition:
+      box-shadow 0.2s ease,
+      border-color 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .card-item:hover {
+    background: rgba(120, 20, 20, 0.5) !important;
+    border-color: var(--patriotic-color-accent-dim);
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 215, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .bg-bg-card {
+    background: linear-gradient(
+      135deg,
+      rgba(120, 20, 20, 0.6) 0%,
+      rgba(82, 15, 15, 0.7) 100%
+    ) !important;
+    border-color: var(--patriotic-color-primary);
+    // border-left-width: 3px;
+    border-left-style: solid;
+    box-shadow:
+      0 2px 8px rgba(222, 41, 16, 0.25),
+      0 0 0 1px var(--patriotic-color-primary),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  button:hover,
+  .cursor-pointer:hover {
+    color: var(--patriotic-color-accent);
+  }
+
+  input {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(110, 24, 24, 0.7);
+    color: var(--patriotic-text-main);
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  input::placeholder {
+    color: var(--patriotic-text-secondary);
+    opacity: 0.8;
+  }
+
+  /* 列表滚动区域与卡片间距（减小） */
+  .space-y-4 > * + * {
+    margin-top: 0.375rem;
+  }
+}
+
+/* 中间聊天区 */
+.patriotic-chat-center {
+  background: var(--patriotic-bg-card) !important;
+  border: 1px solid var(--patriotic-border-color);
+  border-left: none;
+  color: var(--patriotic-text-main);
+
+  .border-b {
+    border-color: var(--patriotic-border-color) !important;
+  }
+
+  button:hover {
+    color: var(--patriotic-color-accent);
+  }
+
+  /* 顶部多模型 / 设置按钮 - 红色爱国主题，统一高度 */
+  .chat-header-actions .chat-header-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding-inline: 0.75rem;
+    height: 2.25rem;
+    border-radius: 999px;
+    background: linear-gradient(
+      135deg,
+      rgba(222, 41, 16, 0.95) 0%,
+      rgba(212, 175, 55, 0.95) 100%
+    );
+    border: 1px solid var(--patriotic-border-color);
+    color: #fff;
+    transition:
+      transform 0.15s ease,
+      filter 0.15s ease;
+  }
+
+  .chat-header-actions .chat-header-action:hover:not(:disabled) {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+  }
+
+  .chat-header-actions .chat-header-action:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .chat-header-actions .chat-header-action svg {
+    color: #fff;
+  }
+
+  /* 聊天输入框区域 - 层次感 */
+  form.rounded-md {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.25) 0%,
+      rgba(0, 0, 0, 0.35) 100%
+    );
+    border: 1px solid rgba(110, 24, 24, 0.7);
+    border-radius: 12px;
+    transition: border-color 0.2s ease;
+  }
+  form.rounded-md:focus-within {
+    border-color: var(--patriotic-color-accent-dim);
+  }
+  form.rounded-md textarea {
+    background: rgba(0, 0, 0, 0.2) !important;
+    color: var(--patriotic-text-main) !important;
+    border-radius: 8px;
+    padding: 0.5rem 0.25rem;
+  }
+  form.rounded-md textarea::placeholder {
+    color: var(--patriotic-text-secondary);
+    opacity: 0.85;
+  }
+  /* 发送/停止按钮 - 红金主色（底部右侧小图标按钮） */
+  form.rounded-md .flex.items-center.gap-3 button.size-5 {
+    background: linear-gradient(
+      135deg,
+      var(--patriotic-color-primary) 0%,
+      var(--patriotic-color-accent-dim) 100%
+    ) !important;
+    color: #fff !important;
+    border-radius: 8px;
+  }
+  form.rounded-md .flex.items-center.gap-3 button.size-5:hover:not(:disabled) {
+    filter: brightness(1.15);
+  }
+}
+
+.patriotic-chat-center .text-text-secondary,
+.patriotic-chat-center [class*='text-text-secondary'] {
+  color: var(--patriotic-text-secondary) !important;
+}
+
+/* 右侧应用设置 */
+.patriotic-chat-settings {
+  background: var(--patriotic-bg-card) !important;
+  border-left: 1px solid var(--patriotic-border-color);
+  border-left-width: 4px;
+  border-left-color: var(--patriotic-color-primary);
+  color: var(--patriotic-text-main);
+
+  .section-title,
+  h3,
+  h4,
+  [class*='font-semibold'] {
+    color: var(--patriotic-color-accent);
+  }
+
+  .text-text-secondary,
+  [class*='text-muted'] {
+    color: var(--patriotic-text-secondary) !important;
+  }
+
+  .shrink-0.bg-border-button,
+  [class*='separator'] {
+    background: var(--patriotic-border-color) !important;
+  }
+
+  input,
+  textarea,
+  [role='combobox'] {
+    background: rgba(0, 0, 0, 0.25);
+    border-color: var(--patriotic-border-color);
+    color: var(--patriotic-text-main);
+  }
+
+  /* 下拉框触发器 - 红色爱国主题 */
+  button[role='combobox'],
+  [data-state='open'][role='combobox'] {
+    border-radius: 8px;
+    border: 1px solid rgba(110, 24, 24, 0.8);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  button[role='combobox']:hover:not(:disabled),
+  [data-state='open'][role='combobox'] {
+    border-color: var(--patriotic-color-accent-dim);
+    color: var(--patriotic-text-main);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--patriotic-text-secondary);
+    opacity: 0.8;
+  }
+
+  button[class*='outline'] {
+    border-color: var(--patriotic-border-color);
+    color: var(--patriotic-text-main);
+  }
+  button[class*='outline']:hover {
+    border-color: var(--patriotic-color-accent);
+    color: var(--patriotic-color-accent);
+  }
+
+  button:not([class*='outline']):not([class*='ghost']) {
+    // background: linear-gradient(
+    //   120deg,
+    //   var(--patriotic-color-primary) 0%,
+    //   var(--patriotic-color-primary) 45%,
+    //   var(--patriotic-color-accent) 100%
+    // ) !important;
+    // border-bottom: 2px solid var(--patriotic-border-gold);
+    // color: #fff !important;
+  }
+  button:not([class*='outline']):not([class*='ghost']):hover {
+    filter: brightness(1.1);
+  }
+}
+
+/* 聊天设置内下拉框浮层 - 红色爱国主题（浮层挂在 body 下，用 data-state=open 且非 button 选中浮层） */
+body.patriotic-chat-settings-open [data-state='open']:not(button) {
+  background: rgba(82, 15, 15, 0.98) !important;
+  border: 1px solid #6e1818 !important;
+  border-radius: 10px;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+body.patriotic-chat-settings-open
+  [data-state='open']:not(button)
+  [data-radix-select-viewport],
+body.patriotic-chat-settings-open [data-state='open']:not(button) [cmdk-list] {
+  color: #ffffff;
+}
+body.patriotic-chat-settings-open
+  [data-state='open']:not(button)
+  [role='option'],
+body.patriotic-chat-settings-open [data-state='open']:not(button) [cmdk-item] {
+  color: #ffecec;
+  border-radius: 6px;
+}
+body.patriotic-chat-settings-open
+  [data-state='open']:not(button)
+  [role='option'][data-highlighted],
+body.patriotic-chat-settings-open
+  [data-state='open']:not(button)
+  [role='option']:hover,
+body.patriotic-chat-settings-open
+  [data-state='open']:not(button)
+  [cmdk-item][data-selected='true'],
+body.patriotic-chat-settings-open
+  [data-state='open']:not(button)
+  [cmdk-item]:hover {
+  background: rgba(222, 41, 16, 0.35) !important;
+  color: #ffd700;
+}
+body.patriotic-chat-settings-open
+  [data-state='open']:not(button)
+  [data-cmdk-input-wrapper] {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border-color: #6e1818;
+  color: #ffffff;
+}
+body.patriotic-chat-settings-open
+  [data-state='open']:not(button)
+  [data-cmdk-input]::placeholder {
+  color: #ffecec;
+  opacity: 0.8;
+}

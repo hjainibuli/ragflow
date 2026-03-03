@@ -124,7 +124,7 @@ export function Sessions({ handleConversationCardClick }: SessionProps) {
   }
 
   return (
-    <section className="p-5 w-[296px] flex flex-col">
+    <section className="p-5 w-[296px] flex flex-col flex-1 min-h-0 overflow-hidden">
       <section className="flex items-center text-base justify-between gap-2">
         <div className="flex gap-3 items-center min-w-0">
           <RAGFlowAvatar

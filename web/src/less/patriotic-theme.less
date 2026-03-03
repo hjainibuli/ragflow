@@ -80,6 +80,17 @@
   backdrop-filter: blur(8px);
 }
 
+/* Header 欢迎语：红色爱国主题 */
+.patriotic-app .navbar-container .header-welcome {
+  color: var(--text-gold);
+  font-weight: 600;
+  font-size: 1.125rem;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 0 12px rgba(255, 215, 0, 0.2);
+  letter-spacing: 0.02em;
+}
+
 /* Dataset sidebar: subtle panel so it reads against the background */
 .patriotic-app .patriotic-dataset-sidebar {
   background-color: rgba(0, 0, 0, 0.08);
@@ -135,4 +146,185 @@
 .patriotic-app .bg-bg-card {
   background-color: rgba(82, 15, 15, 0.75) !important;
   border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* Chat list page: 仅搜索框和筛选按钮加背景，与背景区分；标题行不加背景 */
+.patriotic-app
+  .patriotic-chat-list
+  .chat-list-filter-bar
+  > div:last-child
+  input {
+  background: rgba(82, 15, 15, 0.85) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-main) !important;
+  min-width: 10rem;
+}
+.patriotic-app
+  .patriotic-chat-list
+  .chat-list-filter-bar
+  > div:last-child
+  input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.85;
+}
+.patriotic-app
+  .patriotic-chat-list
+  .chat-list-filter-bar
+  > div:last-child
+  input:focus,
+.patriotic-app
+  .patriotic-chat-list
+  .chat-list-filter-bar
+  > div:last-child
+  input:hover {
+  border-color: var(--color-accent-dim);
+  outline: none;
+}
+/* 仅筛选按钮（右侧区域第一个按钮） */
+.patriotic-app
+  .patriotic-chat-list
+  .chat-list-filter-bar
+  > div:last-child
+  > div:first-of-type
+  button {
+  background: rgba(82, 15, 15, 0.9) !important;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 8px;
+}
+.patriotic-app
+  .patriotic-chat-list
+  .chat-list-filter-bar
+  > div:last-child
+  > div:first-of-type
+  button:hover {
+  background: rgba(120, 20, 20, 0.95) !important;
+  border-color: var(--color-accent-dim);
+  color: var(--color-accent);
+}
+
+/* Datasets home: 与聊天列表同款搜索 / 筛选样式 */
+.patriotic-app
+  .patriotic-datasets-list
+  .datasets-filter-bar
+  > div:last-child
+  input {
+  background: rgba(82, 15, 15, 0.85) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-main) !important;
+  min-width: 10rem;
+}
+.patriotic-app
+  .patriotic-datasets-list
+  .datasets-filter-bar
+  > div:last-child
+  input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.85;
+}
+.patriotic-app
+  .patriotic-datasets-list
+  .datasets-filter-bar
+  > div:last-child
+  input:focus,
+.patriotic-app
+  .patriotic-datasets-list
+  .datasets-filter-bar
+  > div:last-child
+  input:hover {
+  border-color: var(--color-accent-dim);
+  outline: none;
+}
+.patriotic-app
+  .patriotic-datasets-list
+  .datasets-filter-bar
+  > div:last-child
+  > div:first-of-type
+  button {
+  background: rgba(82, 15, 15, 0.9) !important;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 8px;
+}
+.patriotic-app
+  .patriotic-datasets-list
+  .datasets-filter-bar
+  > div:last-child
+  > div:first-of-type
+  button:hover {
+  background: rgba(120, 20, 20, 0.95) !important;
+  border-color: var(--color-accent-dim);
+  color: var(--color-accent);
+}
+
+/* Files home: 仅搜索框样式统一，文件上传按钮保持原样 */
+.patriotic-app .patriotic-files-list .files-filter-bar > div:last-child input {
+  background: rgba(82, 15, 15, 0.85) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-main) !important;
+  min-width: 10rem;
+}
+.patriotic-app
+  .patriotic-files-list
+  .files-filter-bar
+  > div:last-child
+  input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.85;
+}
+.patriotic-app
+  .patriotic-files-list
+  .files-filter-bar
+  > div:last-child
+  input:focus,
+.patriotic-app
+  .patriotic-files-list
+  .files-filter-bar
+  > div:last-child
+  input:hover {
+  border-color: var(--color-accent-dim);
+  outline: none;
+}
+
+/* Dataset setting page: 让设置表单在背景上更有层次感 */
+.patriotic-app .patriotic-dataset-setting .dataset-setting-main {
+  background: rgba(82, 15, 15, 0.9);
+  border-radius: 16px;
+  border: 1px solid rgba(110, 24, 24, 0.8);
+  padding: 1.5rem 1.75rem;
+}
+.patriotic-app
+  .patriotic-dataset-setting
+  .dataset-setting-main
+  > .text-base.font-medium {
+  color: var(--text-gold);
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid rgba(184, 134, 11, 0.65);
+  margin-bottom: 0.75rem;
+}
+
+/* Dataset retrieval testing page: 测试表单与结果卡片增加层次感 */
+.patriotic-app .patriotic-dataset-testing .testing-layout {
+  align-items: stretch;
+}
+.patriotic-app .patriotic-dataset-testing .testing-form-panel,
+.patriotic-app .patriotic-dataset-testing .testing-result-panel {
+  background: rgba(82, 15, 15, 0.9);
+  border-radius: 16px;
+  border: 1px solid rgba(110, 24, 24, 0.8);
+  padding: 1.25rem 1.5rem;
+}
+.patriotic-app
+  .patriotic-dataset-testing
+  .testing-form-panel
+  .text-text-primary.font-semibold,
+.patriotic-app .patriotic-dataset-testing .testing-result-panel h3,
+.patriotic-app
+  .patriotic-dataset-testing
+  .testing-result-panel
+  .text-base.font-medium {
+  color: var(--text-gold);
 }

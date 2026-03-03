@@ -22,9 +22,19 @@ import { ChatPromptEngine } from './chat-prompt-engine';
 import { SavingButton } from './saving-button';
 import { useChatSettingSchema } from './use-chat-setting-schema';
 
-type ChatSettingsProps = { hasSingleChatBox: boolean };
+const BODY_CLASS = 'patriotic-chat-settings-open';
 
-export function ChatSettings({ hasSingleChatBox }: ChatSettingsProps) {
+type ChatSettingsProps = {
+  hasSingleChatBox: boolean;
+  open?: boolean;
+  onToggle?: () => void;
+};
+
+export function ChatSettings({
+  hasSingleChatBox,
+  open: openProp,
+  onToggle,
+}: ChatSettingsProps) {
   const formSchema = useChatSettingSchema();
   const { data } = useFetchDialog();
   const { setDialog, loading } = useSetDialog();
@@ -33,6 +43,12 @@ export function ChatSettings({ hasSingleChatBox }: ChatSettingsProps) {
 
   const { visible: settingVisible, switchVisible: switchSettingVisible } =
     useSetModalState(true);
+
+  const isControlled = openProp !== undefined;
+  const open = isControlled ? openProp : settingVisible;
+  const setOpen = isControlled
+    ? (onToggle ?? (() => {}))
+    : switchSettingVisible;
 
   type FormSchemaType = z.infer<typeof formSchema>;
 
@@ -99,8 +115,17 @@ export function ChatSettings({ hasSingleChatBox }: ChatSettingsProps) {
     }
   }, [data, form]);
 
-  if (settingVisible) {
-    return (
+  useEffect(() => {
+    if (open) {
+      document.body.classList.add(BODY_CLASS);
+    } else {
+      document.body.classList.remove(BODY_CLASS);
+    }
+    return () => document.body.classList.remove(BODY_CLASS);
+  }, [open]);
+
+  if (!open) {
+    return isControlled ? null : (
       <div className="p-5">
         <Button
           className="w-full"
@@ -115,13 +140,10 @@ export function ChatSettings({ hasSingleChatBox }: ChatSettingsProps) {
   }
 
   return (
-    <section className="p-5  w-[440px] flex flex-col">
+    <section className="p-5 w-[440px] flex flex-col patriotic-chat-settings shrink-0">
       <div className="flex justify-between items-center text-base pb-2">
         {t('chat.chatSetting')}
-        <PanelRightClose
-          className="size-4 cursor-pointer"
-          onClick={switchSettingVisible}
-        />
+        <PanelRightClose className="size-4 cursor-pointer" onClick={setOpen} />
       </div>
       <Form {...form}>
         <form
@@ -136,7 +158,7 @@ export function ChatSettings({ hasSingleChatBox }: ChatSettingsProps) {
             <ChatModelSettings></ChatModelSettings>
           </section>
           <div className="space-x-5 text-right pt-4">
-            <Button variant={'outline'} onClick={switchSettingVisible}>
+            <Button variant={'outline'} onClick={setOpen}>
               {t('chat.cancel')}
             </Button>
             <SavingButton loading={loading}></SavingButton>
