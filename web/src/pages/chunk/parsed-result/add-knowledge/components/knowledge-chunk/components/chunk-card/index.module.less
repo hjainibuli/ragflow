@@ -36,3 +36,11 @@
 .cardSelectedDark {
   background-color: #ffffff2f;
 }
+
+/* 选中时分片内容文字改为黑色，与背景区分 */
+.chunkCard.cardSelected .contentText,
+.chunkCard.cardSelectedDark .contentText,
+.chunkCard.cardSelected .contentText *,
+.chunkCard.cardSelectedDark .contentText * {
+  color: #000000 !important;
+}

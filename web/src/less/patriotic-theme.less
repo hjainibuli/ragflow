@@ -328,3 +328,74 @@
   .text-base.font-medium {
   color: var(--text-gold);
 }
+
+/* Chunk shell: 顶层 /chunk 页面使用与登录相同的爱国背景 */
+.patriotic-chunk-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.08) 0%,
+      transparent 45%,
+      rgba(0, 0, 0, 0.12) 100%
+    ),
+    url('/login-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+}
+
+/* Chunk shell 内的 PageHeader：使用半透明顶栏，让背景图透出 */
+.patriotic-chunk-shell > header {
+  background-color: rgba(0, 0, 0, 0.12) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+}
+
+/* Chunk parsed chunks: 结果工具条（模式切换 + 搜索 + 筛选 + 新增） */
+.chunk-result-bar .chunk-result-segmented {
+  background: rgba(82, 15, 15, 0.7);
+  border-radius: 999px;
+  border: 1px solid rgba(110, 24, 24, 0.8);
+}
+.chunk-result-bar .chunk-result-segmented-active {
+  background-image: linear-gradient(
+    120deg,
+    var(--color-primary) 0%,
+    var(--color-primary) 50%,
+    var(--color-accent-dim) 100%
+  ) !important;
+  color: #000 !important;
+}
+.chunk-result-bar .chunk-result-search {
+  background: rgba(0, 0, 0, 0.25) !important;
+  border: 1px solid rgba(110, 24, 24, 0.8);
+  color: var(--text-main) !important;
+  border-radius: 999px;
+  min-width: 12rem;
+}
+.chunk-result-bar .chunk-result-search::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+.chunk-result-bar .chunk-result-search:focus,
+.chunk-result-bar .chunk-result-search:hover {
+  border-color: var(--color-accent-dim);
+  outline: none;
+}
+.chunk-result-bar .chunk-result-icon-btn,
+.chunk-result-bar .chunk-result-add-btn {
+  border-radius: 999px;
+  border: 1px solid rgba(110, 24, 24, 0.8);
+  background: rgba(0, 0, 0, 0.15);
+  color: var(--text-main);
+}
+.chunk-result-bar .chunk-result-icon-btn:hover,
+.chunk-result-bar .chunk-result-add-btn:hover {
+  background: rgba(222, 41, 16, 0.4);
+  border-color: var(--color-accent-dim);
+  color: var(--color-accent);
+}

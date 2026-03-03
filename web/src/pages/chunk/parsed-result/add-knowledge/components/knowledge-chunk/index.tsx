@@ -180,7 +180,7 @@ const Chunk = () => {
   }, [documentInfo]);
 
   return (
-    <>
+    <section className="patriotic-chunk-shell h-full flex flex-col min-h-0">
       <PageHeader>
         <Breadcrumb>
           <BreadcrumbList>
@@ -230,14 +230,14 @@ const Chunk = () => {
           >
             <Spin spinning={loading} className={styles.spin} size="large">
               <div className="h-[100px] flex flex-col justify-end pb-[5px]">
-                <div>
+                <div className={styles.chunkResultTitle}>
                   <h2 className="text-[24px]">{t('chunk.chunkResult')}</h2>
-                  <div className="text-[14px] text-text-secondary">
+                  <div className="chunk-result-tip text-[14px] text-text-secondary">
                     {t('chunk.chunkResultTip')}
                   </div>
                 </div>
               </div>
-              <div className=" rounded-[16px] bg-[#FFF]/10 pl-[20px] pb-[20px] pt-[20px] box-border	mb-2">
+              <div className="rounded-[16px] bg-[#520f0f]/80 border border-[#6e1818] shadow-[0_12px_32px_rgba(0,0,0,0.6)] pl-[20px] pb-[20px] pt-[20px] box-border mb-2">
                 <ChunkResultBar
                   handleInputChange={handleInputChange}
                   searchString={searchString}
@@ -310,7 +310,7 @@ const Chunk = () => {
           parserId={documentInfo.parser_id}
         />
       )}
-    </>
+    </section>
   );
 };
 

@@ -45,7 +45,7 @@ export default function ChunkPage() {
   }, [location.pathname]);
 
   return (
-    <section>
+    <section className="patriotic-chunk-shell h-full flex flex-col min-h-0">
       <PageHeader>
         <Breadcrumb>
           <BreadcrumbList>
@@ -81,7 +81,9 @@ export default function ChunkPage() {
           </Button>
         </div>
       </PageHeader>
-      <Outlet />
+      <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
+        <Outlet />
+      </div>
     </section>
   );
 }

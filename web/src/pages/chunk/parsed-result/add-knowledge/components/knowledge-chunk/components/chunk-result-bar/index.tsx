@@ -59,8 +59,10 @@ export default ({
     changeChunkTextMode(value);
   };
   return (
-    <div className="flex pr-[25px]">
+    <div className="chunk-result-bar flex pr-[25px]">
       <Segmented
+        className="chunk-result-segmented"
+        activeClassName="chunk-result-segmented-active"
         options={textSelectOptions}
         value={textSelectValue}
         onChange={changeTextSelectValue}
@@ -68,18 +70,14 @@ export default ({
       <div className="ml-auto"></div>
       <div className="h-8 flex items-center gap-5">
         <SearchInput
-          // style={{ width: 200 }}
           placeholder={t('search')}
-          // icon={<SearchOutlined />}
           onChange={handleInputChange}
           value={searchString}
+          className="chunk-result-search"
         />
         <Popover>
           <PopoverTrigger asChild>
-            <Button
-              variant={'ghost'}
-              // className="bg-bg-card text-text-secondary hover:bg-card"
-            >
+            <Button variant={'ghost'} className="chunk-result-icon-btn">
               <ListFilter />
             </Button>
           </PopoverTrigger>
@@ -90,7 +88,7 @@ export default ({
         <Button
           variant={'ghost'}
           onClick={() => createChunk()}
-          // className="bg-bg-card text-primary hover:bg-card"
+          className="chunk-result-add-btn"
         >
           <Plus size={44} />
         </Button>
