@@ -1,3 +1,4 @@
+name: ragflow
 include:
   - ./docker-compose-base.yml
 # To ensure that the container processes the locally modified `service_conf.yaml.template` instead of the one included in its image, you need to mount the local `service_conf.yaml.template` to the container.
@@ -89,6 +90,7 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./service_conf.yaml.template:/ragflow/conf/service_conf.yaml.template
       - ./entrypoint.sh:/ragflow/entrypoint.sh
+      - D:\workspace\github\ragflow\web\:/ragflow/web/
     env_file: .env
     networks:
       - ragflow

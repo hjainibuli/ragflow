@@ -1,4 +1,4 @@
-const UDIFY_IFRAME_SRC = 'https://udify.app/chatbot/F59FLOEeCwa8Zvgw';
+const UDIFY_IFRAME_SRC = 'http://192.168.1.200:8040/chatbot/2bKV8KgM7sJqukmG';
 
 export default function TextToImagePage() {
   return (
