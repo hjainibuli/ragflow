@@ -126,7 +126,7 @@ const ChatCard = forwardRef(function ChatCard(
 
   return (
     <Card className="bg-transparent border flex-1 flex flex-col">
-      <CardHeader className="border-b px-5 py-3">
+      <CardHeader className="patriotic-chat-multi-header border-b px-5 py-3">
         <CardTitle className="flex justify-between items-center">
           <div className="flex items-center gap-3">
             <span className="text-base">{idx + 1}</span>

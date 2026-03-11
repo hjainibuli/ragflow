@@ -56,13 +56,18 @@ export const EmptyCard = (props: EmptyCardProps) => {
   return (
     <div
       className={cn(
-        'flex flex-col gap-3 items-start justify-start border border-dashed border-border-button rounded-md p-5 w-fit',
+        'flex flex-col gap-3 items-start justify-start',
+        'border-2 border-border-button rounded-md p-5 w-fit',
+        'bg-bg-card/80 backdrop-blur-sm shadow-md',
+        'transition-all duration-200 hover:shadow-lg hover:scale-[1.02] hover:border-accent-primary/60 hover:bg-bg-card',
         className,
       )}
       style={style}
     >
       {icon}
-      {title && <div className="text-text-primary text-base">{title}</div>}
+      {title && (
+        <div className="text-text-primary text-base font-medium">{title}</div>
+      )}
       {description && (
         <div className="text-text-secondary text-sm">{description}</div>
       )}
@@ -111,7 +116,7 @@ export const EmptyAppCard = (props: {
           <div
             className={cn(
               defaultClass,
-              'flex items-center justify-start w-full',
+              'flex items-center justify-start w-full text-text-primary',
             )}
           >
             <Plus size={24} />

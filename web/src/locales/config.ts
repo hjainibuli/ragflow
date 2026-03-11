@@ -38,11 +38,13 @@ i18n
   .use(LanguageDetector)
   .init({
     detection: {
+      order: ['localStorage'],
       lookupLocalStorage: 'lng',
+      caches: ['localStorage'],
     },
     supportedLngs: Object.values(LanguageAbbreviation),
     resources,
-    fallbackLng: 'en',
+    fallbackLng: 'zh',
     interpolation: {
       escapeValue: false,
     },
@@ -79,9 +81,9 @@ export const changeLanguageAsync = async (lng: string): Promise<void> => {
 };
 
 export const initLanguage = async (): Promise<void> => {
-  const currentLng = i18n.language || localStorage.getItem('lng') || 'en';
+  const currentLng = localStorage.getItem('lng') || 'zh';
 
-  if (currentLng !== 'en' && languageImports[currentLng]) {
+  if (languageImports[currentLng]) {
     await loadLanguageAsync(currentLng);
     await i18n.changeLanguage(currentLng);
   }

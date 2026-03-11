@@ -183,7 +183,7 @@ const Chunk = () => {
     <section className="patriotic-chunk-shell h-full flex flex-col min-h-0">
       <PageHeader>
         <Breadcrumb>
-          <BreadcrumbList>
+          <BreadcrumbList className="text-white [&_*]:text-white [&_*]:opacity-100">
             <BreadcrumbItem>
               <BreadcrumbLink onClick={navigateToDatasetList}>
                 {t('knowledgeDetails.dataset')}

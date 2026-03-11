@@ -35,8 +35,8 @@ export function GeneralForm() {
         control={form.control}
         name="name"
         render={({ field }) => (
-          <FormItem className="items-center space-y-0">
-            <div className="flex">
+          <FormItem className="items-center space-y-0 dataset-item-card">
+            <div className="flex items-center">
               <FormLabel className="text-sm whitespace-nowrap w-1/4">
                 <span className="text-red-600">*</span>
                 {t('common.name')}
@@ -52,7 +52,7 @@ export function GeneralForm() {
           </FormItem>
         )}
       />
-      <div className="items-center">
+      <div className="items-center dataset-item-card">
         <RAGFlowFormItem
           name="language"
           label={t('common.language')}
@@ -68,8 +68,8 @@ export function GeneralForm() {
         control={form.control}
         name="avatar"
         render={({ field }) => (
-          <FormItem className="items-center space-y-0">
-            <div className="flex">
+          <FormItem className="items-center space-y-0 dataset-item-card">
+            <div className="flex items-center">
               <FormLabel className="text-sm  whitespace-nowrap w-1/4">
                 {t('setting.avatar')}
               </FormLabel>
@@ -93,13 +93,13 @@ export function GeneralForm() {
             form.setValue('description', '  ');
           }
           return (
-            <FormItem className="items-center space-y-0">
+            <FormItem className="items-center space-y-0 dataset-item-card">
               <div className="flex">
                 <FormLabel className="text-sm  whitespace-nowrap w-1/4">
                   {t('flow.description')}
                 </FormLabel>
                 <FormControl className="w-3/4">
-                  <Input {...field}></Input>
+                  <Input {...field} className="dataset-setting-input" />
                 </FormControl>
               </div>
               <div className="flex pt-1">
@@ -110,11 +110,18 @@ export function GeneralForm() {
           );
         }}
       />
-      <PermissionFormField></PermissionFormField>
-      <EmbeddingModelItem isEdit={true}></EmbeddingModelItem>
-      <PageRankFormField></PageRankFormField>
-
-      <TagItems></TagItems>
+      <div className="dataset-item-card">
+        <PermissionFormField></PermissionFormField>
+      </div>
+      <div className="dataset-item-card">
+        <EmbeddingModelItem isEdit={true}></EmbeddingModelItem>
+      </div>
+      <div className="dataset-item-card">
+        <PageRankFormField></PageRankFormField>
+      </div>
+      <div className="dataset-item-card">
+        <TagItems></TagItems>
+      </div>
     </>
   );
 }

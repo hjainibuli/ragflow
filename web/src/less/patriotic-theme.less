@@ -289,6 +289,79 @@
   outline: none;
 }
 
+/* Dataset files page: 搜索框 + 筛选按钮与文件列表同款黑色透明背景 */
+.patriotic-app
+  .patriotic-dataset-files
+  .dataset-files-filter-bar
+  > div:last-child
+  input {
+  background: rgba(82, 15, 15, 0.85) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-main) !important;
+  min-width: 10rem;
+}
+.patriotic-app
+  .patriotic-dataset-files
+  .dataset-files-filter-bar
+  > div:last-child
+  input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.85;
+}
+.patriotic-app
+  .patriotic-dataset-files
+  .dataset-files-filter-bar
+  > div:last-child
+  input:focus,
+.patriotic-app
+  .patriotic-dataset-files
+  .dataset-files-filter-bar
+  > div:last-child
+  input:hover {
+  border-color: var(--color-accent-dim);
+  outline: none;
+}
+.patriotic-app
+  .patriotic-dataset-files
+  .dataset-files-filter-bar
+  > div:last-child
+  > div:first-of-type
+  button {
+  background: rgba(82, 15, 15, 0.9) !important;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 8px;
+}
+.patriotic-app
+  .patriotic-dataset-files
+  .dataset-files-filter-bar
+  > div:last-child
+  > div:first-of-type
+  button:hover {
+  background: rgba(120, 20, 20, 0.95) !important;
+  border-color: var(--color-accent-dim);
+  color: var(--color-accent);
+}
+/* Generate 按钮：与筛选框同款暗红透明背景 */
+.patriotic-app .patriotic-dataset-files .generate button {
+  background: rgba(82, 15, 15, 0.9) !important;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 8px;
+}
+.patriotic-app .patriotic-dataset-files .generate button:hover:not(:disabled) {
+  background: rgba(120, 20, 20, 0.95) !important;
+  border-color: var(--color-accent-dim);
+  color: var(--color-accent);
+}
+.patriotic-app .patriotic-dataset-files .generate button:disabled {
+  background: rgba(82, 15, 15, 0.5) !important;
+  border-color: rgba(110, 24, 24, 0.3);
+  color: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+}
+
 /* Dataset setting page: 让设置表单在背景上更有层次感 */
 .patriotic-app .patriotic-dataset-setting .dataset-setting-main {
   background: rgba(82, 15, 15, 0.9);
@@ -296,14 +369,107 @@
   border: 1px solid rgba(110, 24, 24, 0.8);
   padding: 1.5rem 1.75rem;
 }
-.patriotic-app
-  .patriotic-dataset-setting
-  .dataset-setting-main
-  > .text-base.font-medium {
+.patriotic-app .patriotic-dataset-setting .dataset-setting-main .section-title {
   color: var(--text-gold);
   padding-bottom: 0.25rem;
   border-bottom: 1px solid rgba(184, 134, 11, 0.65);
   margin-bottom: 0.75rem;
+}
+
+/* dataset setting form item card: 每个表单项用卡片样式清晰区分 */
+.patriotic-app
+  .patriotic-dataset-setting
+  .dataset-setting-main
+  .dataset-item-card {
+  border-radius: 10px;
+  border: 1px solid rgba(184, 134, 11, 0.6);
+  background: rgba(0, 0, 0, 0.08);
+  padding: 0.4rem 0.75rem;
+}
+/* 生成范围 Radio（整库/单文件）选项文字为黄色 */
+.patriotic-app
+  .patriotic-dataset-setting
+  .dataset-setting-main
+  .dataset-setting-radio-labels
+  label
+  span.text-foreground {
+  color: var(--text-gold);
+}
+/* 数据集设置页 Raptor prompt 输入框边框 */
+.patriotic-app
+  .patriotic-dataset-setting
+  .dataset-setting-main
+  .dataset-setting-textarea {
+  border: 1px solid rgba(184, 134, 11, 0.65);
+}
+.patriotic-app
+  .patriotic-dataset-setting
+  .dataset-setting-main
+  .dataset-setting-textarea:focus-visible {
+  outline: none;
+  border-color: rgba(184, 134, 11, 0.9);
+}
+/* 数据集设置页输入框（如描述）边框 */
+.patriotic-app
+  .patriotic-dataset-setting
+  .dataset-setting-main
+  .dataset-setting-input {
+  border: 1px solid rgba(184, 134, 11, 0.65);
+}
+.patriotic-app
+  .patriotic-dataset-setting
+  .dataset-setting-main
+  .dataset-setting-input:focus-visible {
+  outline: none;
+  border-color: rgba(184, 134, 11, 0.9);
+}
+
+/* 数据集设置页头像上传占位更清晰 */
+.patriotic-app
+  .patriotic-dataset-setting
+  .dataset-setting-main
+  .avatar-upload-trigger {
+  border-color: rgba(184, 134, 11, 0.9);
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0 1px rgba(184, 134, 11, 0.9);
+}
+
+/* 多模型聊天页：退出按钮、卡片头按钮与模型下拉，字体/图标白色、边框清晰 */
+.patriotic-chat-multi
+  > div.flex.items-center.justify-between.px-10.pb-5
+  button {
+  color: #fff !important;
+  border: 1px solid rgba(184, 134, 11, 0.65) !important;
+  background: rgba(82, 15, 15, 0.6) !important;
+}
+.patriotic-chat-multi
+  > div.flex.items-center.justify-between.px-10.pb-5
+  button:hover {
+  color: #fff !important;
+  border-color: rgba(184, 134, 11, 0.9) !important;
+  background: rgba(82, 15, 15, 0.8) !important;
+}
+.patriotic-chat-multi
+  > div.flex.items-center.justify-between.px-10.pb-5
+  button
+  svg {
+  color: #fff !important;
+}
+.patriotic-chat-multi .patriotic-chat-multi-header button,
+.patriotic-chat-multi .patriotic-chat-multi-header [role='combobox'] {
+  color: #fff !important;
+  border: 1px solid rgba(184, 134, 11, 0.65) !important;
+  background: rgba(82, 15, 15, 0.5) !important;
+}
+.patriotic-chat-multi .patriotic-chat-multi-header button:hover,
+.patriotic-chat-multi .patriotic-chat-multi-header [role='combobox']:hover {
+  color: #fff !important;
+  border-color: rgba(184, 134, 11, 0.9) !important;
+  background: rgba(82, 15, 15, 0.7) !important;
+}
+.patriotic-chat-multi .patriotic-chat-multi-header button svg,
+.patriotic-chat-multi .patriotic-chat-multi-header [role='combobox'] svg {
+  color: #fff !important;
 }
 
 /* Dataset retrieval testing page: 测试表单与结果卡片增加层次感 */

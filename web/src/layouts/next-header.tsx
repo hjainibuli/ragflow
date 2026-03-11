@@ -1,6 +1,12 @@
 import { RAGFlowAvatar } from '@/components/ragflow-avatar';
 import { useTheme } from '@/components/theme-provider';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { Segmented, SegmentedValue } from '@/components/ui/segmented';
 import { LanguageList, LanguageMap, ThemeEnum } from '@/constants/common';
 import { useChangeLanguage, useFetchAppConf } from '@/hooks/logic-hooks';
@@ -8,7 +14,9 @@ import { useNavigatePage } from '@/hooks/logic-hooks/navigate-hooks';
 import { useNavigateWithFromState } from '@/hooks/route-hook';
 import { useFetchUserInfo } from '@/hooks/use-user-setting-request';
 import { Routes } from '@/routes';
+import { camelCase } from 'lodash';
 import {
+  ChevronDown,
   Cpu,
   File,
   House,
@@ -16,7 +24,6 @@ import {
   Library,
   MessageSquareText,
   Moon,
-  Search,
   Sun,
 } from 'lucide-react';
 import React, { useCallback, useMemo } from 'react';
@@ -70,8 +77,8 @@ export function Header() {
       { path: Routes.Root, name: t('header.Root'), icon: House },
       { path: Routes.Datasets, name: t('header.dataset'), icon: Library },
       { path: Routes.Chats, name: t('header.chat'), icon: MessageSquareText },
-      { path: Routes.Searches, name: t('header.search'), icon: Search },
-      { path: Routes.Agents, name: t('header.flow'), icon: Cpu },
+      // { path: Routes.Searches, name: t('header.search'), icon: Search },
+      // { path: Routes.Agents, name: t('header.flow'), icon: Cpu },
       { path: Routes.Memories, name: t('header.memories'), icon: Cpu },
       { path: Routes.Files, name: t('header.fileManager'), icon: File },
       { path: Routes.TextToImage, name: t('header.textToImage'), icon: Image },
@@ -156,7 +163,7 @@ export function Header() {
         >
           <IconFontFill name="GitHub"></IconFontFill>
         </a> */}
-        {/* <DropdownMenu>
+        <DropdownMenu>
           <DropdownMenuTrigger>
             <div className="flex items-center gap-1">
               {t(`common.${camelCase(language)}`)}
@@ -170,7 +177,7 @@ export function Header() {
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
-        </DropdownMenu> */}
+        </DropdownMenu>
         {/* <Button variant={'ghost'} onClick={handleDocHelpCLick}>
           <CircleHelp />
         </Button> */}

@@ -2,7 +2,6 @@ import { CardSineLineContainer } from '@/components/card-singleline-container';
 import { EmptyCardType } from '@/components/empty/constant';
 import { EmptyAppCard } from '@/components/empty/empty';
 import { HomeIcon } from '@/components/svg-icon';
-import { Segmented, SegmentedValue } from '@/components/ui/segmented';
 import { Routes } from '@/routes';
 import { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -28,7 +27,7 @@ const EmptyTypeMap = {
 };
 
 export function Applications() {
-  const [val, setVal] = useState(Routes.Chats);
+  const [val] = useState(Routes.Chats);
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [listLength, setListLength] = useState(0);
@@ -55,15 +54,9 @@ export function Applications() {
     [t],
   );
 
-  const handleChange = (path: SegmentedValue) => {
-    setVal(path as Routes);
-    setListLength(0);
-    setLoading(true);
-  };
-
   return (
     <section className="mt-12">
-      <div className="flex justify-between items-center mb-5">
+      <div className="mb-5">
         <h2 className="section-title text-2xl font-semibold flex gap-2.5">
           <HomeIcon
             name={`${IconMap[val as keyof typeof IconMap]}`}
@@ -71,15 +64,6 @@ export function Applications() {
           />
           {options.find((x) => x.value === val)?.label}
         </h2>
-        <Segmented
-          options={options}
-          value={val}
-          onChange={handleChange}
-          rounded="xxxl"
-          sizeType="xl"
-          buttonSize="xl"
-          activeClassName="text-bg-base bg-metallic-gradient border-b-[#00BEB4] border-b-2"
-        ></Segmented>
       </div>
       {/* <div className="flex flex-wrap gap-4"> */}
       <CardSineLineContainer>

@@ -128,7 +128,7 @@ const RaptorFormFields = ({
                 <div className="w-3/4">
                   <FormControl>
                     <Radio.Group {...field} disabled={!!data?.finish_at}>
-                      <div className={'flex gap-4 w-full text-text-secondary '}>
+                      <div className="flex gap-4 w-full text-text-secondary dataset-setting-radio-labels">
                         <Radio value="dataset">{t('scopeDataset')}</Radio>
                         <Radio value="file">{t('scopeSingleFile')}</Radio>
                       </div>
@@ -163,6 +163,7 @@ const RaptorFormFields = ({
                       <FormControl>
                         <Textarea
                           {...field}
+                          className="dataset-setting-textarea"
                           rows={8}
                           onChange={(e) => {
                             field.onChange(e?.target?.value);

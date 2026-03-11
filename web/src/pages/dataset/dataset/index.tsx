@@ -137,8 +137,9 @@ export default function Dataset() {
 
   return (
     <>
-      <section className="p-5 min-w-[880px]">
+      <section className="patriotic-dataset-files p-5 min-w-[880px]">
         <ListFilterBar
+          className="dataset-files-filter-bar"
           title="Dataset"
           onSearchChange={handleInputChange}
           searchString={searchString}
@@ -189,7 +190,7 @@ export default function Dataset() {
         >
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button size={'sm'}>
+              <Button>
                 <Upload />
                 {t('knowledgeDetails.addFile')}
               </Button>

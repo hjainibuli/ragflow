@@ -25,7 +25,7 @@ export default function DatasetWrapper() {
       <section className="patriotic-app flex h-full min-h-screen flex-col w-full">
         <PageHeader>
           <Breadcrumb>
-            <BreadcrumbList>
+            <BreadcrumbList className="text-white [&_*]:text-white [&_*]:opacity-100">
               <BreadcrumbItem>
                 <BreadcrumbLink onClick={navigateToDatasetList}>
                   {t('knowledgeDetails.dataset')}

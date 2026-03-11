@@ -273,61 +273,77 @@ export default function DatasetSettings() {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 ">
               <div className="w-[768px] h-[calc(100vh-240px)] pr-1 overflow-y-auto scrollbar-auto">
-                <MainContainer className="dataset-setting-main text-text-secondary">
-                  <div className="text-base font-medium text-text-primary">
-                    {t('knowledgeConfiguration.baseInfo')}
-                  </div>
-                  <GeneralForm></GeneralForm>
+                <MainContainer className="dataset-setting-main text-text-secondary space-y-8">
+                  <section className="dataset-setting-section space-y-4">
+                    <div className="text-base font-medium text-text-primary section-title">
+                      {t('knowledgeConfiguration.baseInfo')}
+                    </div>
+                    <GeneralForm></GeneralForm>
+                  </section>
 
-                  <Divider />
-                  <div className="text-base font-medium text-text-primary">
-                    {t('knowledgeConfiguration.dataPipeline')}
-                  </div>
-                  <ParseTypeItem line={1} />
-                  {parseType === 1 && (
-                    <ChunkMethodItem line={1}></ChunkMethodItem>
-                  )}
-                  {parseType === 2 && (
-                    <DataFlowSelect
-                      isMult={false}
-                      showToDataPipeline={true}
-                      formFieldName="pipeline_id"
-                      layout={FormLayout.Horizontal}
-                    />
-                  )}
+                  <Divider className="my-3" />
+                  <section className="dataset-setting-section space-y-4">
+                    <div className="text-base font-medium text-text-primary section-title">
+                      {t('knowledgeConfiguration.dataPipeline')}
+                    </div>
+                    <div className="dataset-item-card">
+                      <ParseTypeItem line={1} />
+                    </div>
+                    {parseType === 1 && (
+                      <div className="dataset-item-card">
+                        <ChunkMethodItem line={1}></ChunkMethodItem>
+                      </div>
+                    )}
+                    {parseType === 2 && (
+                      <div className="dataset-item-card">
+                        <DataFlowSelect
+                          isMult={false}
+                          showToDataPipeline={true}
+                          formFieldName="pipeline_id"
+                          layout={FormLayout.Horizontal}
+                        />
+                      </div>
+                    )}
+                    {parseType === 1 && (
+                      <div className="dataset-item-card">
+                        <ChunkMethodForm />
+                      </div>
+                    )}
+                  </section>
 
-                  {/* <Divider /> */}
-                  {parseType === 1 && <ChunkMethodForm />}
+                  <Divider className="my-3" />
+                  <section className="dataset-setting-section">
+                    <div className="dataset-item-card">
+                      <LinkDataSource
+                        data={sourceData}
+                        handleLinkOrEditSubmit={handleLinkOrEditSubmit}
+                        unbindFunc={unbindFunc}
+                        handleAutoParse={handleAutoParse}
+                      />
+                    </div>
+                  </section>
 
-                  {/* <LinkDataPipeline
-                  data={pipelineData}
-                  handleLinkOrEditSubmit={handleLinkOrEditSubmit}
-                /> */}
-                  <Divider />
-                  <LinkDataSource
-                    data={sourceData}
-                    handleLinkOrEditSubmit={handleLinkOrEditSubmit}
-                    unbindFunc={unbindFunc}
-                    handleAutoParse={handleAutoParse}
-                  />
-                  <Divider />
-                  <div className="text-base font-medium text-text-primary">
-                    {t('knowledgeConfiguration.globalIndex')}
-                  </div>
-                  <GraphRagItems
-                    className="border-none p-0"
-                    data={graphRagGenerateData as IGenerateLogButtonProps}
-                    onDelete={() =>
-                      handleDeletePipelineTask(GenerateType.KnowledgeGraph)
-                    }
-                  ></GraphRagItems>
-                  <Divider />
-                  <RaptorFormFields
-                    data={raptorGenerateData as IGenerateLogButtonProps}
-                    onDelete={() =>
-                      handleDeletePipelineTask(GenerateType.Raptor)
-                    }
-                  ></RaptorFormFields>
+                  <Divider className="my-3" />
+                  <section className="dataset-setting-section space-y-4">
+                    <div className="text-base font-medium text-text-primary section-title">
+                      {t('knowledgeConfiguration.globalIndex')}
+                    </div>
+                    <div className="dataset-item-card space-y-4">
+                      <GraphRagItems
+                        className="border-none p-0"
+                        data={graphRagGenerateData as IGenerateLogButtonProps}
+                        onDelete={() =>
+                          handleDeletePipelineTask(GenerateType.KnowledgeGraph)
+                        }
+                      ></GraphRagItems>
+                      <RaptorFormFields
+                        data={raptorGenerateData as IGenerateLogButtonProps}
+                        onDelete={() =>
+                          handleDeletePipelineTask(GenerateType.Raptor)
+                        }
+                      ></RaptorFormFields>
+                    </div>
+                  </section>
                 </MainContainer>
               </div>
               <div className="text-right items-center flex justify-end gap-3 w-[768px]">

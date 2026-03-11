@@ -91,7 +91,7 @@ export default function Chat() {
 
   if (isDebugMode) {
     return (
-      <section className="patriotic-chat pt-14 h-[100vh] pb-24">
+      <section className="patriotic-chat patriotic-chat-multi pt-14 h-[100vh] pb-24">
         <div className="flex items-center justify-between px-10 pb-5">
           <span className="text-2xl">
             {t('chat.multipleModels')} ({chatBoxIds.length}/3)
@@ -116,7 +116,7 @@ export default function Chat() {
     <section className="patriotic-chat h-full flex flex-col min-h-0">
       <PageHeader>
         <Breadcrumb>
-          <BreadcrumbList>
+          <BreadcrumbList className="text-white [&_*]:text-white [&_*]:opacity-100">
             <BreadcrumbItem>
               <BreadcrumbLink onClick={navigateToChatList}>
                 {t('chat.chat')}

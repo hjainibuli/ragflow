@@ -226,6 +226,8 @@ export default {
       parseFileTip: '您确定要解析吗？',
       parseFile: '解析文件',
       emptyMetadata: '无元数据',
+      metadataField: '元数据字段',
+      systemAttribute: '系统属性',
       localUpload: '本地上传',
       fileSize: '文件大小',
       fileType: '文件类型',
@@ -387,6 +389,9 @@ export default {
       theDocumentBeingParsedCannotBeDeleted: '正在解析的文档不能被删除',
     },
     knowledgeConfiguration: {
+      globalIndexModelTip:
+        '用于生成知识图谱、RAPTOR、自动元数据、自动关键词和自动问题。模型性能会影响生成质量。',
+      globalIndexModel: '索引模型',
       settings: '设置',
       autoMetadataTip:
         '自动生成元数据。适用于解析新文件。现有文件需要重新解析才能更新（chunk将保留）。请注意，配置中指定的索引模型将消耗额外的 Token。',

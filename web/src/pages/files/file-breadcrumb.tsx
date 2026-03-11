@@ -13,7 +13,7 @@ export function FileBreadcrumb() {
   const navigate = useNavigate();
   return (
     <Breadcrumb>
-      <BreadcrumbList>
+      <BreadcrumbList className="text-white [&_*]:text-white [&_*]:opacity-100">
         {breadcrumbItems.map((x, idx) => (
           <div key={x.path} className="flex items-center gap-2">
             {idx !== 0 && <BreadcrumbSeparator />}

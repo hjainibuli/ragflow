@@ -234,7 +234,7 @@ export function ParseTypeItem({ line = 2 }: { line?: number }) {
                 <Radio.Group {...field}>
                   <div
                     className={cn(
-                      'flex gap-2 justify-between text-muted-foreground',
+                      'flex gap-2 justify-between text-muted-foreground dataset-setting-radio-labels',
                       line === 1 ? 'w-1/2' : 'w-3/4',
                     )}
                   >

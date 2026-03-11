@@ -252,10 +252,10 @@ export const AvatarUpload = forwardRef<HTMLInputElement, AvatarUploadProps>(
     }, [handleWheel, containerRef.current]);
 
     return (
-      <div className="flex justify-start items-end space-x-2">
+      <div className="flex justify-start items-center space-x-2">
         <div className="relative group">
           {!avatarBase64Str ? (
-            <div className="w-[64px] h-[64px] grid place-content-center border border-dashed bg-bg-input rounded-md">
+            <div className="avatar-upload-trigger w-[64px] h-[64px] grid place-content-center border border-dashed bg-bg-input rounded-md">
               <div className="flex flex-col items-center">
                 <Plus />
                 <p>{t('common.upload')}</p>
