@@ -233,7 +233,8 @@
     opacity: 0.85;
   }
   /* 发送/停止按钮 - 红金主色（底部右侧小图标按钮） */
-  form.rounded-md .flex.items-center.gap-3 button.size-5 {
+  form.rounded-md .flex.items-center.gap-3 button.size-5,
+  form.rounded-md .flex.items-center.gap-3 button.size-7 {
     background: linear-gradient(
       135deg,
       var(--patriotic-color-primary) 0%,
@@ -242,7 +243,8 @@
     color: #fff !important;
     border-radius: 8px;
   }
-  form.rounded-md .flex.items-center.gap-3 button.size-5:hover:not(:disabled) {
+  form.rounded-md .flex.items-center.gap-3 button.size-5:hover:not(:disabled),
+  form.rounded-md .flex.items-center.gap-3 button.size-7:hover:not(:disabled) {
     filter: brightness(1.15);
   }
 }

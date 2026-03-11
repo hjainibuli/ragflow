@@ -109,7 +109,10 @@ export default function TestingForm({
             <FormItem>
               {/* <FormLabel>{t('knowledgeDetails.testText')}</FormLabel> */}
               <FormControl>
-                <Textarea {...field}></Textarea>
+                <Textarea
+                  {...field}
+                  className="dataset-testing-textarea"
+                ></Textarea>
               </FormControl>
 
               <FormMessage />

@@ -187,6 +187,7 @@ const LinkDataSource = (props: ILinkDataSourceProps) => {
           <Button
             type="button"
             variant={'transparent'}
+            className="patriotic-link-datasource-btn"
             onClick={() => {
               openLinkModalFunc?.(true);
             }}

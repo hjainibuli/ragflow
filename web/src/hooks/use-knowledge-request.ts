@@ -27,7 +27,7 @@ import {
   useQueryClient,
 } from '@tanstack/react-query';
 import { useDebounce } from 'ahooks';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router';
 import {
   useGetPaginationWithRouter,
@@ -57,7 +57,6 @@ export const useKnowledgeBaseId = (): string => {
 export const useTestRetrieval = () => {
   const knowledgeBaseId = useKnowledgeBaseId();
   const [values, setValues] = useState<ITestRetrievalRequestBody>();
-  const mountedRef = useRef(false);
   const { filterValue, handleFilterSubmit } = useHandleFilterSubmit();
 
   const [page, setPage] = useState(1);
@@ -99,13 +98,6 @@ export const useTestRetrieval = () => {
       return { ...result, isRuned: true };
     },
   });
-
-  useEffect(() => {
-    if (mountedRef.current && !!queryParams.question) {
-      refetch();
-    }
-    mountedRef.current = true;
-  }, [page, pageSize, refetch, filterValue, queryParams]);
 
   return {
     data,

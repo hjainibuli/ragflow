@@ -70,11 +70,11 @@ export function useSelectDatasetFilters() {
 
   const filters: FilterCollection[] = useMemo(() => {
     return [
-      { field: 'type', label: 'File Type', list: fileTypes },
-      { field: 'run', label: 'Status', list: fileStatus },
+      { field: 'type', label: '文件类型', list: fileTypes },
+      { field: 'run', label: '状态', list: fileStatus },
       {
         field: 'metadata',
-        label: 'Metadata field',
+        label: '元数据字段',
         canSearch: true,
         list: metaDataList,
       },

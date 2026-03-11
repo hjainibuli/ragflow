@@ -386,13 +386,86 @@
   background: rgba(0, 0, 0, 0.08);
   padding: 0.4rem 0.75rem;
 }
-/* 生成范围 Radio（整库/单文件）选项文字为黄色 */
+/* 数据集设置页 Radio（解析方法、整库/单文件）：未选中白色，选中黄色 */
 .patriotic-app
   .patriotic-dataset-setting
   .dataset-setting-main
   .dataset-setting-radio-labels
   label
   span.text-foreground {
+  color: #fff;
+}
+.patriotic-app
+  .patriotic-dataset-setting
+  .dataset-setting-main
+  .dataset-setting-radio-labels
+  label:has(> span > .bg-text-primary)
+  span.text-foreground {
+  color: var(--text-gold);
+}
+/* 未选中态：外圈圆点边框和背景明显，与背景区分 */
+.patriotic-app
+  .patriotic-dataset-setting
+  .dataset-setting-main
+  .dataset-setting-radio-labels
+  label
+  > span:not(:has(.bg-text-primary)) {
+  border-color: rgba(255, 255, 255, 0.9) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+/* 选中态圆点为黄色（内部 .bg-text-primary 圆点） */
+.patriotic-app
+  .patriotic-dataset-setting
+  .dataset-setting-main
+  .dataset-setting-radio-labels
+  .bg-text-primary {
+  background-color: var(--text-gold) !important;
+}
+
+/* 数据集设置页「链接数据源」按钮：红金渐变 */
+.patriotic-app
+  .patriotic-dataset-setting
+  .dataset-setting-main
+  .patriotic-link-datasource-btn {
+  background: linear-gradient(
+    135deg,
+    rgba(222, 41, 16, 0.95) 0%,
+    rgba(212, 175, 55, 0.95) 100%
+  ) !important;
+  border-radius: 999px;
+  border: 1px solid rgba(184, 134, 11, 0.85);
+  color: #fff !important;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(222, 41, 16, 0.35);
+}
+.patriotic-app
+  .patriotic-dataset-setting
+  .dataset-setting-main
+  .patriotic-link-datasource-btn:hover {
+  filter: brightness(1.08);
+}
+
+/* 数据集测试页：问题输入框边框更明显 */
+.patriotic-app
+  .patriotic-dataset-testing
+  .testing-form-panel
+  .dataset-testing-textarea {
+  border: 1px solid rgba(184, 134, 11, 0.85);
+}
+.patriotic-app
+  .patriotic-dataset-testing
+  .testing-form-panel
+  .dataset-testing-textarea:focus-visible {
+  outline: none;
+  border-color: rgba(255, 215, 0, 0.95);
+}
+
+/* 数据集测试页：Chunk 相似度标题行文字为黄色 */
+.patriotic-app
+  .patriotic-dataset-testing
+  .testing-result-panel
+  .patriotic-testing-chunk-title {
   color: var(--text-gold);
 }
 /* 数据集设置页 Raptor prompt 输入框边框 */

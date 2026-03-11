@@ -21,7 +21,7 @@ const similarityList: Array<{ field: keyof ITestingChunk; label: string }> = [
 const ChunkTitle = ({ item }: { item: ITestingChunk }) => {
   const { t } = useTranslate('knowledgeDetails');
   return (
-    <div className="flex gap-3 text-xs text-text-sub-title-invert italic">
+    <div className="flex gap-3 text-xs text-text-sub-title-invert italic patriotic-testing-chunk-title">
       {similarityList.map((x) => (
         <div key={x.field} className="space-x-1">
           <span>{((item[x.field] as number) * 100).toFixed(2)}</span>

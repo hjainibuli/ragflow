@@ -264,7 +264,7 @@ export function NextMessageInput({
             )}
           </div>
           {sendLoading ? (
-            <Button onClick={stopOutputMessage} className="size-5 rounded-sm">
+            <Button onClick={stopOutputMessage} className="size-7 rounded-sm">
               <CircleStop />
             </Button>
           ) : (
@@ -275,7 +275,7 @@ export function NextMessageInput({
                 }}
               />
               <Button
-                className="size-5 rounded-sm"
+                className="size-7 rounded-sm"
                 disabled={
                   sendDisabled || isUploading || sendLoading || !value.trim()
                 }
