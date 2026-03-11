@@ -3,7 +3,7 @@ import { useTheme } from '@/components/theme-provider';
 import { Button } from '@/components/ui/button';
 import { Segmented, SegmentedValue } from '@/components/ui/segmented';
 import { LanguageList, LanguageMap, ThemeEnum } from '@/constants/common';
-import { useChangeLanguage } from '@/hooks/logic-hooks';
+import { useChangeLanguage, useFetchAppConf } from '@/hooks/logic-hooks';
 import { useNavigatePage } from '@/hooks/logic-hooks/navigate-hooks';
 import { useNavigateWithFromState } from '@/hooks/route-hook';
 import { useFetchUserInfo } from '@/hooks/use-user-setting-request';
@@ -46,6 +46,7 @@ export function Header() {
 
   const changeLanguage = useChangeLanguage();
   const { setTheme, theme } = useTheme();
+  const appConf = useFetchAppConf();
 
   const {
     data: { language = 'English', avatar, nickname },
@@ -129,7 +130,7 @@ export function Header() {
           className="size-10 mr-[12] cursor-pointer"
           onClick={handleLogoClick}
         />
-        <div className="header-welcome">欢迎来到，XXX 智能决策系统</div>
+        <div className="header-welcome">欢迎来到，{appConf.systemTitle}</div>
       </div>
       <Segmented
         rounded="xxxl"

@@ -1,5 +1,6 @@
 import SvgIcon from '@/components/svg-icon';
 import { useAuth } from '@/hooks/auth-hooks';
+import { useFetchAppConf } from '@/hooks/logic-hooks';
 import {
   useLogin,
   useLoginChannels,
@@ -43,6 +44,7 @@ const Login = () => {
     useLoginWithChannel();
   const { t } = useTranslation('translation', { keyPrefix: 'login' });
   const [isLoginPage, setIsLoginPage] = useState(true);
+  const appConf = useFetchAppConf();
 
   const loading =
     signLoading ||
@@ -165,7 +167,7 @@ const Login = () => {
             </div>
           </div>
           <h1 className="welcome-title text-[36px] font-medium text-center mt-6">
-            {t('title')}
+            {appConf.systemTitle || t('title')}
           </h1>
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center px-4 py-20 sm:px-6 lg:px-8">

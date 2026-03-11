@@ -92,6 +92,8 @@ services:
       - ./entrypoint.sh:/ragflow/entrypoint.sh
       - D:\workspace\github\ragflow\web\:/ragflow/web/
     env_file: .env
+    environment:
+      - LANG=zh_CN
     networks:
       - ragflow
     restart: unless-stopped

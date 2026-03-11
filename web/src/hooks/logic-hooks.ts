@@ -155,6 +155,7 @@ export const useGetPagination = () => {
 
 export interface AppConf {
   appName: string;
+  systemTitle: string;
 }
 
 export const useFetchAppConf = () => {
