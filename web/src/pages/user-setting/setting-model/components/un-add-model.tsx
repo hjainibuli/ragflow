@@ -48,35 +48,14 @@ export const AvailableModels: FC<{
   const { factoryList } = useSelectLlmList();
 
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
   const filteredModels = useMemo(() => {
-    const models = factoryList.filter((model) => {
-      const matchesSearch = model.name
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase());
-      const matchesTag =
-        selectedTag === null ||
-        model.tags.split(',').some((tag) => tag.trim() === selectedTag);
-      return matchesSearch && matchesTag;
-    });
-    return models;
-  }, [factoryList, searchTerm, selectedTag]);
-
-  const allTags = useMemo(() => {
-    const tagsSet = new Set<string>();
-    factoryList.forEach((model) => {
-      model.tags.split(',').forEach((tag) => tagsSet.add(tag.trim()));
-    });
-    return Array.from(tagsSet).sort(
-      (a, b) =>
-        (orderMap[a as TagType] || 999) - (orderMap[b as TagType] || 999),
-    );
-  }, [factoryList]);
-
-  const handleTagClick = (tag: string) => {
-    setSelectedTag(selectedTag === tag ? null : tag);
-  };
+    return factoryList
+      .filter((model) => model.name.toLowerCase() === 'xinference')
+      .filter((model) =>
+        model.name.toLowerCase().includes(searchTerm.toLowerCase()),
+      );
+  }, [factoryList, searchTerm]);
 
   return (
     <div className=" text-text-primary h-full p-4">
@@ -95,35 +74,6 @@ export const AvailableModels: FC<{
         />
         {/* <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-text-secondary" /> */}
         {/* </div> */}
-      </div>
-
-      {/* Tags Filter */}
-      <div className="flex flex-wrap gap-2 mb-6">
-        <Button
-          variant={'secondary'}
-          onClick={() => setSelectedTag(null)}
-          className={`px-1 py-1 text-xs rounded-sm bg-bg-card h-5 transition-colors ${
-            selectedTag === null
-              ? ' text-bg-base bg-text-primary '
-              : 'text-text-secondary bg-bg-card border-none'
-          }`}
-        >
-          All
-        </Button>
-        {allTags.map((tag) => (
-          <Button
-            variant={'secondary'}
-            key={tag}
-            onClick={() => handleTagClick(tag)}
-            className={`px-1 py-1 text-xs rounded-sm bg-bg-card h-5 transition-colors ${
-              selectedTag === tag
-                ? ' text-bg-base bg-text-primary '
-                : 'text-text-secondary  border-none bg-bg-card'
-            }`}
-          >
-            {mapModelKey[tag.trim() as keyof typeof mapModelKey] || tag.trim()}
-          </Button>
-        ))}
       </div>
 
       {/* Models List */}
