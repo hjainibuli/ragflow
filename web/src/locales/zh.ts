@@ -1002,21 +1002,21 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       minimaxBaseUrlPlaceholder: '(仅国际用户填写 https://api.minimax.io/v1)',
       modify: '修改',
       systemModelSettings: '设置默认模型',
-      chatModel: 'LLM',
+      chatModel: '语言模型',
       chatModelTip: '所有新创建的知识库都会使用默认的聊天模型。',
-      ttsModel: 'TTS',
+      ttsModel: '文本转语音模型',
       ttsModelTip:
         '默认的tts模型会被用于在对话过程中请求语音生成时使用。如未显示可选模型，请根据 https://ragflow.io/docs/dev/supported_models 确认你的模型供应商是否提供该模型。',
-      embeddingModel: 'Embedding',
+      embeddingModel: '嵌入模型',
       embeddingModelTip:
         '所有新创建的知识库使用的默认嵌入模型。如未显示可选模型，请检查你是否在使用 RAGFlow slim 版(不含嵌入模型)；或根据 https://ragflow.io/docs/dev/supported_models 确认你的模型供应商是否提供该模型。',
-      img2txtModel: 'VLM',
+      img2txtModel: '图片转文本模型',
       img2txtModelTip:
         '所有新创建的知识库都将使用默认的 img2txt 模型。 它可以描述图片或视频。如未显示可选模型，请根据 https://ragflow.io/docs/dev/supported_models 确认你的模型供应商是否提供该模型。',
-      sequence2txtModel: 'ASR',
+      sequence2txtModel: '语音转文本模型',
       sequence2txtModelTip:
         '所有新创建的知识库都将使用默认的 ASR 模型。 使用此模型将语音翻译为相应的文本。如未显示可选模型，请根据 https://ragflow.io/docs/dev/supported_models 确认你的模型供应商是否提供该模型。',
-      rerankModel: 'Rerank',
+      rerankModel: '重排序模型',
       rerankModelTip: `默认的 reranking 模型。如未显示可选模型，请根据 https://ragflow.io/docs/dev/supported_models 确认你的模型供应商是否提供该模型。`,
       workspace: '工作空间',
       upgrade: '升级',

@@ -1,29 +1,21 @@
 import { IconFontFill } from '@/components/icon-font';
 import { RAGFlowAvatar } from '@/components/ragflow-avatar';
-import ThemeToggle from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
-import { Domain } from '@/constants/common';
 import { useSecondPathName } from '@/hooks/route-hook';
 import { useLogout } from '@/hooks/use-login-request';
-import {
-  useFetchSystemVersion,
-  useFetchUserInfo,
-} from '@/hooks/use-user-setting-request';
+import { useFetchUserInfo } from '@/hooks/use-user-setting-request';
 import { cn } from '@/lib/utils';
 import { Routes } from '@/routes';
 import { TFunction } from 'i18next';
-import { Banknote, Box, Server, Unplug, User, Users } from 'lucide-react';
-import { useEffect } from 'react';
+import { Banknote, Box, User, Users } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useHandleMenuClick } from './hooks';
 
 const menuItems = (t: TFunction) => [
-  { icon: Server, label: t('setting.dataSources'), key: Routes.DataSource },
   { icon: Box, label: t('setting.model'), key: Routes.Model },
   { icon: Banknote, label: 'MCP', key: Routes.Mcp },
   { icon: Users, label: t('setting.team'), key: Routes.Team },
   { icon: User, label: t('setting.profile'), key: Routes.Profile },
-  { icon: Unplug, label: t('setting.api'), key: Routes.Api },
   // {
   //   icon: MessageSquareQuote,
   //   label: 'Prompt Templates',
@@ -37,17 +29,11 @@ export function SideBar() {
   const pathName = useSecondPathName();
   const { data: userInfo } = useFetchUserInfo();
   const { handleMenuClick, active } = useHandleMenuClick();
-  const { version, fetchSystemVersion } = useFetchSystemVersion();
   const { t } = useTranslation();
-  useEffect(() => {
-    if (location.host !== Domain) {
-      fetchSystemVersion();
-    }
-  }, [fetchSystemVersion]);
   const { logout } = useLogout();
 
   return (
-    <aside className="w-[303px] bg-bg-base flex flex-col">
+    <aside className="patriotic-user-setting-sidebar w-[303px] bg-bg-base flex flex-col">
       <div className="px-6 flex gap-2 items-center">
         <RAGFlowAvatar
           avatar={userInfo?.avatar}
@@ -93,13 +79,7 @@ export function SideBar() {
         })}
       </div>
 
-      <div className="p-6 mt-auto ">
-        <div className="flex items-center gap-2 mb-6 justify-between">
-          <div className="mr-2 px-2 text-accent-primary rounded-md">
-            {version}
-          </div>
-          <ThemeToggle />
-        </div>
+      <div className="p-6 mt-auto">
         <Button
           variant="ghost"
           className="w-full gap-3 bg-bg-base border border-border-button"

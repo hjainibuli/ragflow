@@ -129,7 +129,7 @@ export function Header() {
   }, [pathname]);
 
   return (
-    <section className="navbar-container py-5 px-10 flex justify-between items-center ">
+    <section className="navbar-container shrink-0 py-5 px-10 flex justify-between items-center ">
       <div className="flex items-center gap-4">
         <img
           src={'/logo.png'}

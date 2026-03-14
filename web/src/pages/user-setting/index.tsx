@@ -1,6 +1,4 @@
-import { Outlet } from 'react-router';
-import { SideBar } from './sidebar';
-
+import { HeroWaves } from '@/components/hero-waves';
 import { PageHeader } from '@/components/page-header';
 import {
   Breadcrumb,
@@ -14,14 +12,16 @@ import { useNavigatePage } from '@/hooks/logic-hooks/navigate-hooks';
 import { cn } from '@/lib/utils';
 import { House } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Outlet } from 'react-router';
 import styles from './index.module.less';
+import { SideBar } from './sidebar';
 
 const UserSetting = () => {
   const { t } = useTranslation();
   const { navigateToHome } = useNavigatePage();
 
   return (
-    <section className="flex flex-col h-full">
+    <section className="patriotic-app patriotic-user-setting flex flex-col h-full min-h-screen">
       <PageHeader>
         <Breadcrumb>
           <BreadcrumbList>
@@ -44,10 +44,16 @@ const UserSetting = () => {
         )}
       >
         <SideBar></SideBar>
-        <div className={cn(styles.outletWrapper, 'flex flex-1 rounded-lg')}>
+        <div
+          className={cn(
+            styles.outletWrapper,
+            'patriotic-user-setting-outlet flex flex-1 rounded-lg',
+          )}
+        >
           <Outlet></Outlet>
         </div>
       </div>
+      <HeroWaves />
     </section>
   );
 };
