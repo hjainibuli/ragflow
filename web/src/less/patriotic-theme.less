@@ -148,6 +148,16 @@
   border: 1px solid rgba(212, 175, 55, 0.15);
 }
 
+/* User setting (team tables): lighten card/input shells for readability */
+.patriotic-app .patriotic-user-setting .patriotic-setting-table-shell {
+  background-color: rgba(82, 15, 15, 0.35) !important;
+  border-color: rgba(212, 175, 55, 0.22) !important;
+}
+.patriotic-app .patriotic-user-setting .patriotic-setting-table.bg-bg-card {
+  background-color: rgba(82, 15, 15, 0.42) !important;
+  border-color: rgba(212, 175, 55, 0.18) !important;
+}
+
 /* Chat list page: 仅搜索框和筛选按钮加背景，与背景区分；标题行不加背景 */
 .patriotic-app
   .patriotic-chat-list
@@ -653,6 +663,22 @@
   color: var(--text-main);
   border-color: transparent;
   background-color: transparent !important;
+}
+
+/* Make logout button visible (override transparent sidebar buttons) */
+.patriotic-user-setting
+  .patriotic-user-setting-sidebar
+  button.patriotic-logout-btn {
+  background-color: rgba(222, 41, 16, 0.28) !important;
+  border: 1px solid rgba(184, 134, 11, 0.45) !important;
+  color: var(--text-main) !important;
+}
+.patriotic-user-setting
+  .patriotic-user-setting-sidebar
+  button.patriotic-logout-btn:hover {
+  background-color: rgba(222, 41, 16, 0.42) !important;
+  border-color: rgba(255, 215, 0, 0.6) !important;
+  color: #ffffff !important;
 }
 .patriotic-user-setting .patriotic-user-setting-sidebar button:hover {
   background-color: rgba(82, 15, 15, 0.35) !important;

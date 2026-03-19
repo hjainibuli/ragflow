@@ -72,8 +72,8 @@ const TenantTable = ({ searchTerm }: { searchTerm: string }) => {
   };
 
   return (
-    <div className="rounded-lg bg-bg-input scrollbar-auto overflow-hidden border border-border-default">
-      <Table rootClassName="rounded-lg">
+    <div className="patriotic-setting-table-shell rounded-lg bg-bg-input scrollbar-auto overflow-hidden border border-border-default">
+      <Table rootClassName="patriotic-setting-table rounded-lg">
         <TableHeader className="bg-bg-title">
           <TableRow className="hover:bg-bg-title">
             <TableHead className="h-12 px-4">{t('common.name')}</TableHead>
@@ -119,15 +119,17 @@ const TenantTable = ({ searchTerm }: { searchTerm: string }) => {
                   {tenant.role === TenantRole.Invite ? (
                     <div className="flex gap-2">
                       <Button
-                        variant="link"
-                        className="p-0 h-auto"
+                        variant="secondary"
+                        size="sm"
+                        className="h-7 px-2 text-white border-0 bg-gradient-to-r from-[#de2910] via-[#de2910] to-[#ffd700] hover:from-[#ff4d4d] hover:via-[#de2910] hover:to-[#ffe066] shadow-sm hover:shadow"
                         onClick={handleAgree(tenant.tenant_id, true)}
                       >
                         {t(`setting.agree`)}
                       </Button>
                       <Button
-                        variant="link"
-                        className="p-0 h-auto"
+                        variant="destructive"
+                        size="sm"
+                        className="h-7 px-2"
                         onClick={handleAgree(tenant.tenant_id, false)}
                       >
                         {t(`setting.refuse`)}

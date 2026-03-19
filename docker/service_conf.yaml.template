@@ -57,15 +57,15 @@ redis:
   password: '${REDIS_PASSWORD:-infini_rag_flow}'
   host: '${REDIS_HOST:-redis}:6379'
 user_default_llm:
-  factory: 'Tongyi-Qianwen'
-  api_key: 'sk-43fe2660acc64e7c9c30c9b30fde5cd7'
-  base_url: 'https://dashscope.aliyuncs.com/compatible-mode/v1'
+  factory: 'Xinference'
+  api_key: ''
+  base_url: 'http://192.168.1.200:8600'
   default_models:
     chat_model:
-      name: 'qwen3-max'
+      name: 'qwen3'
     embedding_model:
-      name: 'qwen3-vl-embedding'
-    rerank_model: 'qwen3-vl-rerank'
+      name: 'Qwen3-Embedding-4B'
+    rerank_model: 'Qwen3-Reranker-4B'
 # postgres:
 #   name: '${POSTGRES_DBNAME:-rag_flow}'
 #   user: '${POSTGRES_USER:-rag_flow}'

@@ -81,8 +81,8 @@ export function SideBar() {
 
       <div className="p-6 mt-auto">
         <Button
-          variant="ghost"
-          className="w-full gap-3 bg-bg-base border border-border-button"
+          variant="destructive"
+          className="patriotic-logout-btn w-full gap-3"
           onClick={() => {
             logout();
           }}

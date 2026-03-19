@@ -54,7 +54,7 @@ const UserSettingTeam = () => {
           </CardTitle>
           <section className="flex gap-4 items-center">
             <SearchInput
-              className="bg-bg-input border-border-default w-32"
+              className="w-32 !bg-[rgba(82,15,15,0.35)] !border-[rgba(212,175,55,0.22)] placeholder:!text-[rgba(255,236,236,0.8)]"
               placeholder={t('common.search')}
               value={searchUser}
               onChange={(e) => setSearchUser(e.target.value)}
@@ -77,7 +77,7 @@ const UserSettingTeam = () => {
             {t('setting.joinedTeams')}
           </CardTitle>
           <SearchInput
-            className="bg-bg-input border-border-default w-32"
+            className="w-32 !bg-[rgba(82,15,15,0.35)] !border-[rgba(212,175,55,0.22)] placeholder:!text-[rgba(255,236,236,0.8)]"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder={t('common.search')}

@@ -29,6 +29,20 @@ export const RetcodeMessage = {
   503: i18n.t('message.503'),
   504: i18n.t('message.504'),
 };
+
+const RetCodeZhHint: Record<number, string> = {
+  109: '邮箱或密码错误，请检查后重试。',
+  403: '该账号已被禁用，请联系管理员。',
+  500: '服务器错误，请稍后重试。',
+  401: '登录已失效，请重新登录。',
+  400: '请求参数错误，请检查后重试。',
+};
+
+const getRetCodeDescription = (code?: number, fallback?: string) => {
+  if (typeof code === 'number' && RetCodeZhHint[code])
+    return RetCodeZhHint[code];
+  return fallback;
+};
 export type ResultCode =
   | 200
   | 201
@@ -110,7 +124,7 @@ request.interceptors.response.use(
     } else if (data?.code === 401) {
       notification.error({
         message: data?.message,
-        description: data?.message,
+        description: getRetCodeDescription(data?.code, data?.message),
         duration: 3,
       });
       authorizationUtil.removeAll();
@@ -118,7 +132,7 @@ request.interceptors.response.use(
     } else if (data?.code !== 0) {
       notification.error({
         message: `${i18n.t('message.hint')} : ${data?.code}`,
-        description: data?.message,
+        description: getRetCodeDescription(data?.code, data?.message),
         duration: 3,
       });
     }
