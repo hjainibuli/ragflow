@@ -39,10 +39,22 @@ const RetCodeZhHint: Record<number, string> = {
   400: '请求参数错误，请检查后重试。',
 };
 
+const ApiMessageZhHint: Array<[string, string]> = [
+  ['has already registered', '该邮箱已被注册，请直接登录或使用其他邮箱'],
+];
+
+const translateApiMessage = (msg?: string): string | undefined => {
+  if (!msg) return msg;
+  const hit = ApiMessageZhHint.find(([keyword]) =>
+    msg.toLowerCase().includes(keyword.toLowerCase()),
+  );
+  return hit ? hit[1] : msg;
+};
+
 const getRetCodeDescription = (code?: number, fallback?: string) => {
   if (typeof code === 'number' && RetCodeZhHint[code])
     return RetCodeZhHint[code];
-  return fallback;
+  return translateApiMessage(fallback);
 };
 export type ResultCode =
   | 200

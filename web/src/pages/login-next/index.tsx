@@ -81,7 +81,7 @@ const Login = () => {
       nickname: z.string(),
       email: z
         .string()
-        .email()
+        .email({ message: '邮箱格式不正确' })
         .min(1, { message: t('emailPlaceholder') }),
       password: z.string().min(1, { message: t('passwordPlaceholder') }),
       remember: z.boolean().optional(),
@@ -90,7 +90,7 @@ const Login = () => {
       if (title === 'register' && !data.nickname) {
         ctx.addIssue({
           path: ['nickname'],
-          message: 'nicknamePlaceholder',
+          message: t('nicknamePlaceholder'),
           code: z.ZodIssueCode.custom,
         });
       }

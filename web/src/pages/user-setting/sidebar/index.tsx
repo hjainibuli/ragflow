@@ -7,13 +7,13 @@ import { useFetchUserInfo } from '@/hooks/use-user-setting-request';
 import { cn } from '@/lib/utils';
 import { Routes } from '@/routes';
 import { TFunction } from 'i18next';
-import { Banknote, Box, User, Users } from 'lucide-react';
+import { Box, User, Users } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useHandleMenuClick } from './hooks';
 
 const menuItems = (t: TFunction) => [
   { icon: Box, label: t('setting.model'), key: Routes.Model },
-  { icon: Banknote, label: 'MCP', key: Routes.Mcp },
+  // { icon: Banknote, label: 'MCP', key: Routes.Mcp },
   { icon: Users, label: t('setting.team'), key: Routes.Team },
   { icon: User, label: t('setting.profile'), key: Routes.Profile },
   // {

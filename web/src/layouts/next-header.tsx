@@ -1,11 +1,9 @@
 import { RAGFlowAvatar } from '@/components/ragflow-avatar';
 import { useTheme } from '@/components/theme-provider';
-import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Segmented, SegmentedValue } from '@/components/ui/segmented';
 import { LanguageList, LanguageMap, ThemeEnum } from '@/constants/common';
@@ -14,17 +12,13 @@ import { useNavigatePage } from '@/hooks/logic-hooks/navigate-hooks';
 import { useNavigateWithFromState } from '@/hooks/route-hook';
 import { useFetchUserInfo } from '@/hooks/use-user-setting-request';
 import { Routes } from '@/routes';
-import { camelCase } from 'lodash';
 import {
-  ChevronDown,
   Cpu,
   File,
   House,
   Image,
   Library,
   MessageSquareText,
-  Moon,
-  Sun,
 } from 'lucide-react';
 import React, { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -164,12 +158,12 @@ export function Header() {
           <IconFontFill name="GitHub"></IconFontFill>
         </a> */}
         <DropdownMenu>
-          <DropdownMenuTrigger>
+          {/* <DropdownMenuTrigger>
             <div className="flex items-center gap-1">
               {t(`common.${camelCase(language)}`)}
               <ChevronDown className="size-4" />
             </div>
-          </DropdownMenuTrigger>
+          </DropdownMenuTrigger> */}
           <DropdownMenuContent>
             {items.map((x) => (
               <DropdownMenuItem key={x.key} onClick={handleItemClick(x.key)}>
@@ -181,7 +175,7 @@ export function Header() {
         {/* <Button variant={'ghost'} onClick={handleDocHelpCLick}>
           <CircleHelp />
         </Button> */}
-        <Button
+        {/* <Button
           variant="ghost"
           size="icon"
           onClick={onThemeClick}
@@ -196,7 +190,7 @@ export function Header() {
           ) : (
             <Sun className="size-5" />
           )}
-        </Button>
+        </Button> */}
         <BellButton></BellButton>
         <div className="relative">
           <RAGFlowAvatar
