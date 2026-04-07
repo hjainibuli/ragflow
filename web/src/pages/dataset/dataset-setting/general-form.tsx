@@ -10,7 +10,10 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { LanguageTranslationMap } from '@/constants/common';
+import {
+  LanguageOptionToI18nKey,
+  LanguageTranslationMap,
+} from '@/constants/common';
 import { useMemo } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -23,11 +26,18 @@ export function GeneralForm() {
   const { t } = useTranslation();
 
   const languageOptions = useMemo(() => {
-    return Object.keys(LanguageTranslationMap).map((x) => ({
-      label: x,
-      value: x,
-    }));
-  }, []);
+    return (
+      Object.keys(LanguageTranslationMap) as Array<
+        keyof typeof LanguageTranslationMap
+      >
+    ).map((x) => {
+      const slug = LanguageOptionToI18nKey[x];
+      return {
+        label: t(`documentLanguageLabels.${slug}`, { defaultValue: x }),
+        value: x,
+      };
+    });
+  }, [t]);
 
   return (
     <>

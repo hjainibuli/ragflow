@@ -239,7 +239,7 @@ export function ParseTypeItem({ line = 2 }: { line?: number }) {
                     )}
                   >
                     <Radio value={1}>{t('builtIn')}</Radio>
-                    <Radio value={2}>{t('manualSetup')}</Radio>
+                    {/* <Radio value={2}>{t('manualSetup')}</Radio> */}
                   </div>
                 </Radio.Group>
               </FormControl>

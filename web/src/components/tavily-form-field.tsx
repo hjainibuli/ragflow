@@ -3,7 +3,6 @@ import { useFormContext } from 'react-hook-form';
 import PasswordInput from './originui/password-input';
 import {
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -26,7 +25,7 @@ export function TavilyFormField({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel tooltip={t('tavilyApiKeyTip')}>Tavily API Key</FormLabel>
+          <FormLabel tooltip={t('tavilyApiKeyTip')}>大模型搜索引擎</FormLabel>
           <FormControl>
             <PasswordInput
               {...field}
@@ -34,7 +33,7 @@ export function TavilyFormField({
               autoComplete="new-password"
             ></PasswordInput>
           </FormControl>
-          <FormDescription>
+          {/* <FormDescription>
             <a
               href="https://app.tavily.com/home"
               target={'_blank'}
@@ -42,7 +41,7 @@ export function TavilyFormField({
             >
               {t('tavilyApiKeyHelp')}
             </a>
-          </FormDescription>
+          </FormDescription> */}
           <FormMessage />
         </FormItem>
       )}

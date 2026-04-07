@@ -13,8 +13,8 @@ export default ({ size, name, create_date }: Props) => {
   return (
     <div>
       <h2 className="text-[16px] truncate">{name}</h2>
-      <div className="text-text-secondary text-[12px] pt-[5px]">
-        Size：{sizeName} Uploaded Time：{dateStr}
+      <div className="text-white text-[12px] pt-[5px]">
+        大小：{sizeName} 上传时间：{dateStr}
       </div>
     </div>
   );

@@ -387,7 +387,7 @@ export const MultiSelect = React.forwardRef<
               />
             )}
             <CommandList className="mt-2">
-              <CommandEmpty>No results found.</CommandEmpty>
+              <CommandEmpty>{t('common.noResults')}</CommandEmpty>
               <CommandGroup>
                 {showSelectAll && options && options.length > 0 && (
                   <CommandItem

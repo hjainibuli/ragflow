@@ -128,6 +128,34 @@ export const LanguageTranslationMap = {
   Bulgarian: 'bg',
 };
 
+/** Maps `LanguageTranslationMap` keys to `translation.documentLanguageLabels.*` i18n keys */
+export const LanguageOptionToI18nKey: Record<
+  keyof typeof LanguageTranslationMap,
+  string
+> = {
+  English: 'english',
+  Chinese: 'chinese',
+  'Traditional Chinese': 'traditionalChinese',
+  Russian: 'russian',
+  Indonesian: 'indonesian',
+  Spanish: 'spanish',
+  Vietnamese: 'vietnamese',
+  Japanese: 'japanese',
+  Korean: 'korean',
+  'Portuguese BR': 'portugueseBr',
+  German: 'german',
+  French: 'french',
+  Italian: 'italian',
+  Tamil: 'tamil',
+  Telugu: 'telugu',
+  Kannada: 'kannada',
+  Thai: 'thai',
+  Greek: 'greek',
+  Hindi: 'hindi',
+  Ukrainian: 'ukrainian',
+  Bulgarian: 'bulgarian',
+};
+
 export enum FileMimeType {
   Bmp = 'image/bmp',
   Csv = 'text/csv',

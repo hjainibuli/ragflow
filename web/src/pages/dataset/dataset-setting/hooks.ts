@@ -1,4 +1,5 @@
 import { LlmModelType } from '@/constants/knowledge';
+import { isBackendDefaultRaptorPrompt } from '@/constants/raptor-prompt';
 import { useSetModalState } from '@/hooks/common-hooks';
 
 import { useFetchKnowledgeBaseConfiguration } from '@/hooks/use-knowledge-request';
@@ -9,6 +10,7 @@ import { useIsFetching } from '@tanstack/react-query';
 import { pick } from 'lodash';
 import { useCallback, useEffect, useState } from 'react';
 import { UseFormReturn } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { useParams, useSearchParams } from 'react-router';
 import { z } from 'zod';
 import { formSchema } from './form-schema';
@@ -37,18 +39,24 @@ export function useHasParsedDocument(isEdit?: boolean) {
 export const useFetchKnowledgeConfigurationOnMount = (
   form: UseFormReturn<z.infer<typeof formSchema>, any, undefined>,
 ) => {
+  const { t } = useTranslation();
   const { data: knowledgeDetails, loading } =
     useFetchKnowledgeBaseConfiguration();
 
   useEffect(() => {
+    const mergedRaptor = {
+      ...form.formState?.defaultValues?.parser_config?.raptor,
+      ...knowledgeDetails.parser_config?.raptor,
+      use_raptor: true,
+    };
+    if (isBackendDefaultRaptorPrompt(mergedRaptor.prompt)) {
+      mergedRaptor.prompt = t('knowledgeConfiguration.promptText');
+    }
+
     const parser_config = {
       ...form.formState?.defaultValues?.parser_config,
       ...knowledgeDetails.parser_config,
-      raptor: {
-        ...form.formState?.defaultValues?.parser_config?.raptor,
-        ...knowledgeDetails.parser_config?.raptor,
-        use_raptor: true,
-      },
+      raptor: mergedRaptor,
       graphrag: {
         ...form.formState?.defaultValues?.parser_config?.graphrag,
         ...knowledgeDetails.parser_config?.graphrag,
@@ -70,7 +78,7 @@ export const useFetchKnowledgeConfigurationOnMount = (
       ]),
     } as z.infer<typeof formSchema>;
     form.reset(formValues);
-  }, [form, knowledgeDetails]);
+  }, [form, knowledgeDetails, t]);
 
   return { knowledgeDetails, loading };
 };

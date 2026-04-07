@@ -92,7 +92,7 @@ export function SimilaritySliderFormField({
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-1">
                       <label className="italic text-xs text-text-secondary">
-                        vector
+                        矢量余弦相似性
                       </label>
                       <span className="bg-bg-card rounded-md p-1 w-10 text-center text-xs">
                         {field.value.toFixed(2)}
@@ -100,7 +100,7 @@ export function SimilaritySliderFormField({
                     </div>
                     <div className="flex  items-center gap-1">
                       <label className="italic text-xs text-text-secondary">
-                        full-text
+                        加权关键字相似性
                       </label>
                       <span className="bg-bg-card rounded-md p-1 w-10 text-center text-xs">
                         {(1 - field.value).toFixed(2)}

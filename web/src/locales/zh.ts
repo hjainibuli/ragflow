@@ -6,6 +6,8 @@ export default {
       noResults: '未查到结果',
       selectPlaceholder: '请选择',
       selectAll: '全选',
+      selectRow: '选择行',
+      rowsSelected: '已选择 {{selected}} / {{total}} 行',
       delete: '删除',
       deleteModalTitle: '确定删除吗?',
       deleteThem: '确定要删除吗？',
@@ -26,6 +28,7 @@ export default {
       portugueseBr: '葡萄牙语 (巴西)',
       chinese: '简体中文',
       traditionalChinese: '繁体中文',
+      russian: '俄语',
       bulgarian: '保加利亚语',
       language: '语言',
       languageMessage: '请输入语言',
@@ -57,8 +60,55 @@ export default {
         '提示：Access Key / Secret Key 可留空，以启用 AWS IAM 自动验证。',
       zendeskDescription: '连接 Zendesk，同步工单、文章及其他内容。',
       promptPlaceholder: '请输入或使用 / 快速插入变量。',
+      mcp: {
+        namePlaceholder: '我的MCP服务器',
+        nameRequired:
+          '长度必须在1到64个字符之间，且只能包含字母、数字、连字符和下划线。',
+        urlPlaceholder: 'https://api.example.com/v1/mcp',
+        tokenPlaceholder: '例如 eyJhbGciOiJIUzI1Ni...',
+      },
       selected: '已选择',
       seeAll: '查看全部',
+    },
+    parserLabels: {
+      naive: '通用',
+      qa: '问答',
+      resume: '简历',
+      manual: '手册',
+      table: '表格',
+      paper: '论文',
+      book: '书籍',
+      laws: '法律法规',
+      presentation: '演示文稿',
+      picture: '图片',
+      one: '整体',
+      audio: '音频',
+      email: '邮件',
+      tag: '标签',
+      knowledge_graph: '知识图谱',
+    },
+    documentLanguageLabels: {
+      english: '英语',
+      chinese: '简体中文',
+      traditionalChinese: '繁体中文',
+      russian: '俄语',
+      indonesian: '印度尼西亚语',
+      spanish: '西班牙语',
+      vietnamese: '越南语',
+      japanese: '日语',
+      korean: '韩语',
+      portugueseBr: '葡萄牙语（巴西）',
+      german: '德语',
+      french: '法语',
+      italian: '意大利语',
+      tamil: '泰米尔语',
+      telugu: '泰卢固语',
+      kannada: '卡纳达语',
+      thai: '泰语',
+      greek: '希腊语',
+      hindi: '印地语',
+      ukrainian: '乌克兰语',
+      bulgarian: '保加利亚语',
     },
     login: {
       loginTitle: '登录账户',
@@ -83,6 +133,7 @@ export default {
       description:
         '免费注册以探索顶级 RAG 技术。 创建知识库和人工智能来增强您的业务',
       review: '来自 500 多条评论',
+      seeAll: '查看全部',
     },
     header: {
       knowledgeBase: '知识库',
@@ -235,10 +286,14 @@ export default {
       notGenerated: '未生成',
       generatedOn: '生成于',
       subbarFiles: '文件列表',
+      generateKnowledgeGraph:
+        '此操作将从数据集中所有文档提取实体和关系，可能需要一段时间才能完成。',
+      generateRaptor:
+        '对文档块进行递归聚类和摘要，构建层级树结构，实现对长文档更具上下文感知的检索。',
       generate: '生成',
       raptor: 'RAPTOR',
       processingType: '处理类型',
-      dataPipeline: '切换或配置 ingestion pipeline。',
+      dataPipeline: '切换或配置数据导入管道。',
       operations: '操作',
       taskId: '任务ID',
       duration: '耗时',
@@ -256,7 +311,7 @@ export default {
       completed: '已完成',
       datasetLog: '知识库日志',
       created: '创建于',
-      learnMore: '内置pipeline简介',
+      learnMore: '内置数据导入管道简介',
       general: '通用',
       chunkMethodTab: '切片方法',
       testResults: '测试结果',
@@ -287,7 +342,7 @@ export default {
       action: '动作',
       parsingStatus: '解析状态',
       parsingStatusTip:
-        '文本解析的时间取决于诸多因素。如果开启了知识图谱、RAPTOR、自动问题提取、自动关键词提取等功能，时间会更长。如果解析进度条长时间不更新，也可以参考这两条 FAQ：https://ragflow.io/docs/dev/faq#why-does-my-document-parsing-stall-at-under-one-percent。',
+        '文本解析的时间取决于诸多因素。如果开启了知识图谱、RAPTOR、自动问题提取、自动关键词提取等功能，时间会更长。',
       processBeginAt: '开始于',
       processDuration: '持续时间',
       progressMsg: '进度',
@@ -300,10 +355,10 @@ export default {
         '我们使用混合相似度得分来评估两行文本之间的距离。 它是加权关键词相似度和向量余弦相似度。 如果查询和块之间的相似度小于此阈值，则该块将被过滤掉。默认设置为 0.2，也就是说文本块的混合相似度得分至少 20 才会被召回。',
       vectorSimilarityWeight: '向量相似度权重',
       vectorSimilarityWeightTip:
-        '我们使用混合相似性评分来评估两行文本之间的距离。它是加权关键字相似性和矢量余弦相似性或rerank得分（0〜1）。两个权重的总和为1.0。',
+        '我们使用混合相似性评分来评估两行文本之间的距离。它是加权关键字相似性和矢量余弦相似性或重排序模型得分（0〜1）。两个权重的总和为1.0。',
       keywordSimilarityWeight: '关键词相似度权重',
       keywordSimilarityWeightTip:
-        '我们使用混合相似性评分来评估两行文本之间的距离。它是加权关键字相似性和矢量余弦相似性或rerank得分（0〜1）。两个权重的总和为1.0。',
+        '我们使用混合相似性评分来评估两行文本之间的距离。它是加权关键字相似性和矢量余弦相似性或重排序模型得分（0〜1）。两个权重的总和为1.0。',
       testText: '测试文本',
       testTextPlaceholder: '请输入您的问题！',
       testingLabel: '运行',
@@ -329,7 +384,7 @@ export default {
       toMessage: '缺少结束页码（不包含）',
       layoutRecognize: 'PDF解析器',
       layoutRecognizeTip:
-        '使用视觉模型进行 PDF 布局分析，以更好地识别文档结构，找到标题、文本块、图像和表格的位置。 如果选择 Naive 选项，则只能获取 PDF 的纯文本。请注意该功能只适用于 PDF 文档，对其他文档不生效。欲了解更多信息，请参阅 https://ragflow.io/docs/dev/select_pdf_parser。',
+        '使用视觉模型进行 PDF 布局分析，以更好地识别文档结构，找到标题、文本块、图像和表格的位置。 如果选择 Naive 选项，则只能获取 PDF 的纯文本。请注意该功能只适用于 PDF 文档，对其他文档不生效。',
       taskPageSize: '任务页面大小',
       taskPageSizeMessage: '请输入您的任务页面大小！',
       taskPageSizeTip: `如果使用布局识别，PDF 文件将被分成连续的组。 布局分析将在组之间并行执行，以提高处理速度。 “任务页面大小”决定组的大小。 页面大小越大，将页面之间的连续文本分割成不同块的机会就越低。`,
@@ -345,20 +400,24 @@ export default {
       bulk: '批量',
       cancel: '取消',
       close: '关闭',
-      rerankModel: 'Rerank模型',
+      rerankModel: '重排序模型',
       rerankPlaceholder: '请选择',
-      rerankTip: `非必选项：若不选择 rerank 模型，系统将默认采用关键词相似度与向量余弦相似度相结合的混合查询方式；如果设置了 rerank 模型，则混合查询中的向量相似度部分将被 rerank 打分替代。请注意：采用 rerank 模型会非常耗时。如需选用 rerank 模型，建议使用 SaaS 的 rerank 模型服务；如果你倾向使用本地部署的 rerank 模型，请务必确保你使用 docker-compose-gpu.yml 启动 RAGFlow。`,
+      rerankTip: `非必选项：若不选择重排序模型，系统将默认采用关键词相似度与向量余弦相似度相结合的混合查询方式；如果设置了重排序模型，则混合查询中的向量相似度部分将被重排序模型打分替代。请注意：采用重排序模型会非常耗时。如需选用重排序模型，建议使用云服务的重排序模型服务；如果你倾向使用本地部署的重排序模型，请务必确保你使用 docker-compose-gpu.yml 启动 RAGFlow。`,
       topK: 'Top-K',
-      topKTip: `与 Rerank 模型配合使用，用于设置传给 Rerank 模型的文本块数量。`,
+      topKTip: `与重排序模型配合使用，用于设置传给重排序模型的文本块数量。`,
       delimiter: `文本分段标识符`,
       delimiterTip:
         '支持多字符作为分隔符，多字符用两个反引号 \\`\\` 分隔符包裹。若配置成：\\n`##`; 系统将首先使用换行符、两个#号以及分号先对文本进行分割，随后再对分得的小文本块按照「建议文本块大小」设定的大小进行拼装。在设置文本分段标识符前请确保理解上述文本分段切片机制。',
+      enableChildrenDelimiter: '子块用于检索',
+      childrenDelimiter: '子块文本分段标识符',
+      childrenDelimiterTip:
+        '分段标识符可以由一个或多个特殊字符组成。若为多个字符，请确保用两个反引号（``）包裹。例如，将分隔符配置为：\\n`##`;，则文本将按换行符、两个井号（##）和分号进行切分。',
       html4excel: '表格转HTML',
-      html4excelTip: `与 General 切片方法配合使用。未开启状态下，表格文件（XLSX、XLS（Excel 97-2003））会按行解析为键值对。开启后，表格文件会被解析为 HTML 表格。若原始表格超过 12 行，系统会自动按每 12 行拆分为多个 HTML 表格。欲了解更多详情，请参阅 https://ragflow.io/docs/dev/enable_excel2html。`,
+      html4excelTip: `与 General 切片方法配合使用。未开启状态下，表格文件（XLSX、XLS（Excel 97-2003））会按行解析为键值对。开启后，表格文件会被解析为 HTML 表格。若原始表格超过 12 行，系统会自动按每 12 行拆分为多个 HTML 表格。`,
       autoKeywords: '自动关键词提取',
-      autoKeywordsTip: `自动为每个文本块中提取 N 个关键词，用以提升查询精度。请注意：该功能采用在“配置”中指定的索引模型提取关键词，因此也会产生更多 Token 消耗。另外，你也可以手动更新生成的关键词。详情请见 https://ragflow.io/docs/dev/autokeyword_autoquestion。`,
+      autoKeywordsTip: `自动为每个文本块中提取 N 个关键词，用以提升查询精度。请注意：该功能采用在“配置”中指定的索引模型提取关键词，因此也会产生更多 Token 消耗。另外，你也可以手动更新生成的关键词。`,
       autoQuestions: '自动问题提取',
-      autoQuestionsTip: `利用在“配置”中指定的索引模型 对知识库的每个文本块提取 N 个问题以提高其排名得分。请注意，开启后将消耗额外的 token。您可以在块列表中查看、编辑结果。如果自动问题提取发生错误，不会妨碍整个分块过程，只会将空结果添加到原始文本块。详情请见 https://ragflow.io/docs/dev/autokeyword_autoquestion。`,
+      autoQuestionsTip: `利用在“配置”中指定的索引模型 对知识库的每个文本块提取 N 个问题以提高其排名得分。请注意，开启后将消耗额外的 token。您可以在块列表中查看、编辑结果。如果自动问题提取发生错误，不会妨碍整个分块过程，只会将空结果添加到原始文本块。`,
       redo: '是否清空已有 {{chunkNum}}个 chunk？',
       setMetaData: '设置元数据',
       pleaseInputJson: '请输入JSON',
@@ -420,6 +479,7 @@ export default {
       paddleocrAlgorithmTip: '用于 PaddleOCR 解析的算法',
       paddleocrSelectAlgorithm: '选择算法',
       paddleocrModelNamePlaceholder: '例如：paddleocr-环境-1',
+      overlappedPercent: '重叠百分比（%）',
       generationScopeTip: '选择 RAPTOR 的生成范围：整个知识库或单个文件。',
       generationScope: '生成范围',
       scopeSingleFile: '单文件',
@@ -432,8 +492,9 @@ export default {
       dataSource: '数据源',
       linkSourceSetTip: '管理与此数据集的数据源链接',
       linkDataSource: '链接数据源',
+      tocExtraction: '页面索引',
       tocExtractionTip:
-        '对于已有的chunk生成层级结构的目录信息（每个文件一个目录）。在查询时，激活`Page Index`后，系统会用大模型去判断用户问题和哪些目录项相关，从而找到相关的chunk。',
+        '对于已有的切块生成层级结构的目录信息（每个文件一个目录）。在查询时，激活`Page Index`后，系统会用大模型去判断用户问题和哪些目录项相关，从而找到相关的切块。',
       deleteGenerateModalContent: `
         <p>删除生成的 <strong class='text-text-primary'>{{type}}</strong> 结果
           将从此数据集中移除所有派生实体和关系。
@@ -451,7 +512,7 @@ export default {
       editLinkDataPipeline: '编辑pipeline',
       linkPipelineSetTip: '管理与此数据集的数据管道链接',
       default: '默认',
-      dataPipeline: '切换或配置 ingestion pipeline。',
+      dataPipeline: '切换或配置数据导入管道。',
       linkDataPipeline: '关联pipeline',
       enableAutoGenerate: '是否启用自动生成',
       teamPlaceholder: '请选择团队',
@@ -597,7 +658,7 @@ export default {
 `,
       useRaptor: '使用召回增强 RAPTOR 策略',
       useRaptorTip:
-        'RAPTOR 常应用于复杂的多跳问答任务。如需打开，请跳转至知识库的文件页面，点击生成 > RAPTOR 开启。详见: https://ragflow.io/docs/dev/enable_raptor。',
+        'RAPTOR 常应用于复杂的多跳问答任务。如需打开，请跳转至知识库的文件页面，点击生成 > RAPTOR 开启。',
       prompt: '提示词',
       promptMessage: '提示词是必填项',
       promptText: `请总结以下段落。 小心数字，不要编造。 段落如下：
@@ -619,7 +680,7 @@ export default {
       maxClusterTip: '最多可创建的聚类数。',
       entityTypes: '实体类型',
       pageRank: '页面排名',
-      pageRankTip: `知识库检索时，你可以为特定知识库设置较高的 PageRank 分数，该知识库中匹配文本块的混合相似度得分会自动叠加 PageRank 分数，从而提升排序权重。详见 https://ragflow.io/docs/dev/set_page_rank。`,
+      pageRankTip: `知识库检索时，你可以为特定知识库设置较高的 PageRank 分数，该知识库中匹配文本块的混合相似度得分会自动叠加 PageRank 分数，从而提升排序权重。`,
       tagName: '标签',
       frequency: '频次',
       searchTags: '搜索标签',
@@ -637,13 +698,12 @@ export default {
       <li>在给你的知识库文本块批量打标签之前，你需要先生成标签集作为样本。 </li>
       <li>自动关键词提取功能中的关键词由 LLM 生成，此过程相对耗时，并且会产生一定的 Token 消耗。 </li>
       </ul>
-      <p> 详见：https://ragflow.io/docs/dev/use_tag_sets </p>
       `,
       tags: '标签',
       addTag: '增加标签',
       useGraphRag: '提取知识图谱',
       useGraphRagTip:
-        '基于知识库内所有切好的文本块构建知识图谱，用以提升多跳和复杂问题回答的正确率。请注意：构建知识图谱将消耗大量 token 和时间。详见 https://ragflow.io/docs/dev/construct_knowledge_graph。',
+        '基于知识库内所有切好的文本块构建知识图谱，用以提升多跳和复杂问题回答的正确率。请注意：构建知识图谱将消耗大量 token 和时间。',
       graphRagMethod: '方法',
       graphRagMethodTip: `Light：实体和关系提取提示来自 GitHub - HKUDS/LightRAG：“LightRAG：简单快速的检索增强生成”<br>
 General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于图的模块化检索增强生成 (RAG) 系统`,
@@ -651,9 +711,17 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       resolutionTip: `解析过程会将具有相同含义的实体合并在一起，从而使知识图谱更简洁、更准确。应合并以下实体：特朗普总统、唐纳德·特朗普、唐纳德·J·特朗普、唐纳德·约翰·特朗普`,
       community: '社区报告生成',
       communityTip:
-        '区块被聚集成层次化的社区，实体和关系通过更高抽象层次将每个部分连接起来。然后，我们使用 LLM 生成每个社区的摘要，称为社区报告。更多信息：https://www.microsoft.com/en-us/research/blog/graphrag-improving-global-search-via-dynamic-community-selection/',
+        '区块被聚集成层次化的社区，实体和关系通过更高抽象层次将每个部分连接起来。然后，我们使用 LLM 生成每个社区的摘要，称为社区报告。',
+      theDocumentBeingParsedCannotBeDeleted: '正在解析的文档不能被删除',
+      lastWeek: '上周以来',
     },
     chunk: {
+      type: '类型',
+      docType: {
+        image: '图片',
+        table: '表格',
+        text: '文本',
+      },
       chunk: '解析块',
       bulk: '批量',
       selectAll: '选择所有',
@@ -665,6 +733,8 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       enabled: '启用',
       disabled: '禁用',
       keyword: '关键词',
+      image: '图片',
+      imageUploaderTitle: '上传新图片以更新此图片块',
       function: '函数',
       chunkMessage: '请输入值！',
       full: '全文',
@@ -704,7 +774,7 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       assistantAvatar: '助理头像',
       language: '语言',
       emptyResponse: '空回复',
-      emptyResponseTip: `如果在知识库中没有检索到用户的问题，它将使用它作为答案。 如果您希望 LLM 在未检索到任何内容时提出自己的意见，请将此留空。`,
+      emptyResponseTip: `如果在知识库中没有检索到用户的问题，它将使用它作为答案。 如果您希望大语言模型在未检索到任何内容时提出自己的意见，请将此留空。`,
       emptyResponseMessage: `当知识库中未检索到任何相关信息时，将触发空响应。由于未选择任何知识库，因此请清除“空响应”。`,
       setAnOpener: '设置开场白',
       setAnOpenerInitial: `你好！ 我是你的助理，有什么可以帮到你的吗？`,
@@ -722,11 +792,11 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       systemTip:
         '当LLM回答问题时，你需要LLM遵循的说明，比如角色设计、答案长度和答案语言等。如果您的模型原生支持在问答中推理，可以通过 //no_thinking 关闭自动推理。',
       topN: 'Top N',
-      topNTip: `并非所有相似度得分高于“相似度阈值”的块都会被提供给大语言模型。 LLM 只能看到这些“Top N”块。`,
+      topNTip: `并非所有相似度得分高于“相似度阈值”的块都会被提供给大语言模型。 大语言模型只能看到这些“Top N”块。`,
       variable: '变量',
       variableTip: `你可以通过对话 API，并配合变量设置来动态调整大模型的系统提示词。
       {knowledge}为系统预留变量，代表从指定知识库召回的文本块。
-      “系统提示词”中的所有变量都必须用大括号{}括起来。详见 https://ragflow.io/docs/dev/set_chat_variables。`,
+      “系统提示词”中的所有变量都必须用大括号{}括起来。`,
       add: '新增',
       key: '关键字',
       optional: '可选的',
@@ -747,10 +817,10 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       temperatureMessage: '温度是必填项',
       temperatureTip:
         '该参数控制模型预测的随机性。 较低的温度使模型对其响应更有信心，而较高的温度则使其更具创造性和多样性。',
-      topP: 'Top P',
-      topPMessage: 'Top P 是必填项',
+      topP: '核心采样',
+      topPMessage: '核心采样是必填项',
       topPTip:
-        '该参数也称为“核心采样”，它设置一个阈值来选择较小的单词集进行采样。 它专注于最可能的单词，剔除不太可能的单词。',
+        '它设置一个阈值来选择较小的单词集进行采样。 它专注于最可能的单词，剔除不太可能的单词。',
       presencePenalty: '存在处罚',
       presencePenaltyMessage: '存在处罚是必填项',
       presencePenaltyTip:
@@ -800,7 +870,7 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       regenerate: '重新生成',
       read: '朗读内容',
       tts: '文本转语音',
-      ttsTip: '是否用语音转换播放语音，请先在设置里面选择TTS（语音转换模型）。',
+      ttsTip: '是否用语音转换播放语音，请先在设置里面选择语音转换模型。',
       relatedQuestion: '相关问题',
       answerTitle: '智能回答',
       multiTurn: '多轮对话优化',
@@ -814,13 +884,13 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       useKnowledgeGraphTip:
         '是否检索与所选知识库对应的知识图谱相关文本块，以处理复杂的多跳问题？这一过程将涉及对实体、关系和社区报告文本块的多次检索，会显著延长检索时间。',
       keyword: '关键词分析',
-      keywordTip: `应用 LLM 分析用户的问题，提取在相关性计算中要强调的关键词。对长查询效果较好，但会延长响应时间。`,
+      keywordTip: `应用大语言模型分析用户的问题，提取在相关性计算中要强调的关键词。对长查询效果较好，但会延长响应时间。`,
       reasoning: '推理',
       reasoningTip:
         '在问答过程中是否启用推理工作流，例如Deepseek-R1或OpenAI o1等模型所采用的方式。启用后，该功能允许模型访问外部知识，并借助思维链推理等技术逐步解决复杂问题。通过将问题分解为可处理的步骤，这种方法增强了模型提供准确回答的能力，从而在需要逻辑推理和多步思考的任务上表现更优。',
       tavilyApiKeyTip:
-        '如果 API 密钥设置正确，它将利用 Tavily 进行网络搜索作为知识库的补充。',
-      tavilyApiKeyMessage: '请输入你的 Tavily API Key',
+        '如果密钥设置正确，它将利用大模型搜索引擎进行网络搜索作为知识库的补充。',
+      tavilyApiKeyMessage: '请输入你的大模型搜索引擎密钥',
       tavilyApiKeyHelp: '如何获取？',
       crossLanguage: '跨语言搜索',
       crossLanguageTip: `选择一种或多种语言进行跨语言搜索。如果未选择任何语言，系统将使用原始查询进行搜索。`,
@@ -840,8 +910,8 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       chatSetting: '聊天设置',
       avatarHidden: '隐藏头像',
       locale: '地区',
-      tocEnhance: 'PageIndex',
-      tocEnhanceTip: `解析文档时生成了目录信息（见General方法的'启用目录抽取'），让大模型返回和用户问题相关的目录项，从而利用目录项拿到相关chunk，对这些chunk在排序中进行加权。这种方法来源于模仿人类查询书本中知识的行为逻辑`,
+      tocEnhance: '页面索引',
+      tocEnhanceTip: `解析文档时生成了目录信息（见《通用》方法的'启用目录抽取'），让大模型返回和用户问题相关的目录项，从而利用目录项拿到相关切块，对这些切块在排序中进行加权。这种方法来源于模仿人类查询书本中知识的行为逻辑`,
       batchDeleteSessions: '批量删除',
       deleteSelectedConfirm: '删除选中的 {count} 个会话？',
     },
@@ -867,6 +937,10 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
         '可选：指定空间键以限制同步到特定空间。留空则同步所有可访问的空间。多个空间请用逗号分隔（例如：DEV,DOCS,HR）',
       s3PrefixTip: `指定 S3 存储桶内的文件夹路径，用于读取文件。
 示例：general/v2/`,
+      S3CompatibleEndpointUrlTip: `S3 兼容存储必填。指定 S3 兼容的端点 URL。
+示例：https://fsn1.your-objectstorage.com`,
+      S3CompatibleAddressingStyleTip: `S3 兼容存储必填。指定 S3 兼容的寻址风格。
+示例：Virtual Hosted Style`,
       addDataSourceModalTitle: '创建你的 {{name}} 链接',
       deleteSourceModalTitle: '删除数据源链接',
       deleteSourceModalContent: `
@@ -898,6 +972,9 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
         '拥有 Gmail / Workspace 访问权限的主要管理员邮箱，用于列出域内用户并作为默认同步账号。',
       gmailTokenTip:
         '请上传由 Google Console 生成的 OAuth JSON。如果仅包含 client credentials，请通过浏览器授权一次以获取长期有效的刷新 Token。',
+      webdavDescription: '连接 WebDAV 服务器以同步文件。',
+      webdavRemotePathTip:
+        '可选：指定 WebDAV 服务器上的文件夹路径（例如 /Documents），留空则从根目录同步。',
       dropboxDescription: '连接 Dropbox，同步指定账号下的文件与文件夹。',
       boxDescription: '连接你的 Box 云盘以同步文件和文件夹。',
       bitbucketDescription: '连接 Bitbucket，同步 PR 内容。',
@@ -919,6 +996,41 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       r2Description: '连接你的 Cloudflare R2 存储桶以导入和同步文件。',
       dropboxAccessTokenTip:
         '请在 Dropbox App Console 生成 Access Token，并勾选 files.metadata.read、files.content.read、sharing.read 等必要权限。',
+      moodleDescription: '连接 Moodle LMS，同步课程内容、论坛和资源。',
+      moodleUrlTip:
+        'Moodle 实例的基础 URL（例如 https://moodle.university.edu），请勿包含 /webservice 或 /login。',
+      moodleTokenTip:
+        '在 Moodle 中生成 Web 服务 Token：前往 "网站管理 → 服务器 → Web 服务 → 管理 Token"。该用户必须已加入您想同步的课程。',
+      seafileDescription: '连接 SeaFile 服务器，从文件库中同步文件和文档。',
+      seafileUrlTip:
+        'SeaFile 服务器的基础 URL（例如 https://seafile.example.com），请勿包含 /api2 或其他路径。',
+      seafileTokenTip:
+        '在 SeaFile 中生成 API Token：前往 "设置 → API Token → 生成 Token"。该 Token 可访问您账户可见的所有文件库。',
+      seafileIncludeSharedTip: '启用后，其他用户共享给您的文件库也将同步。',
+      seafileBatchSizeTip:
+        '每批处理的文档数量，较大的值可能提升性能但会占用更多内存，默认值为 100。',
+      mysqlDescription: '连接 MySQL 数据库，通过 SQL 查询从表中同步数据。',
+      mysqlQueryTip:
+        '用于从数据库提取数据的 SQL 查询（例如：SELECT * FROM products WHERE status = "active"）。',
+      mysqlContentColumnsTip:
+        '以逗号分隔的列名，这些列的值将合并为文档内容用于向量化。',
+      mysqlMetadataColumnsTip:
+        '以逗号分隔的列名，存储为文档元数据（不参与向量化，但可检索）。',
+      mysqlIdColumnTip: '用作唯一文档 ID 的列。若未指定，将使用内容的哈希值。',
+      mysqlTimestampColumnTip:
+        '用于增量同步的日期时间/时间戳列，仅获取上次同步后修改的行。',
+      postgresqlDescription:
+        '连接 PostgreSQL 数据库，通过 SQL 查询从表中同步数据。',
+      postgresqlQueryTip:
+        "用于从数据库提取数据的 SQL 查询（例如：SELECT * FROM products WHERE status = 'active'）。",
+      postgresqlContentColumnsTip:
+        '以逗号分隔的列名，这些列的值将合并为文档内容用于向量化。',
+      postgresqlMetadataColumnsTip:
+        '以逗号分隔的列名，存储为文档元数据（不参与向量化，但可检索）。',
+      postgresqlIdColumnTip:
+        '用作唯一文档 ID 的列。若未指定，将使用内容的哈希值。',
+      postgresqlTimestampColumnTip:
+        '用于增量同步的日期时间/时间戳列，仅获取上次同步后修改的行。',
       jiraDescription: '接入 Jira 工作区，持续同步Issues、评论与附件。',
       jiraBaseUrlTip:
         'Jira 的 Base URL，例如：https://your-domain.atlassian.net。',
@@ -995,8 +1107,7 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       baseUrl: 'Base-Url',
       baseUrlTip:
         '如果您的 API 密钥来自 OpenAI，请忽略它。 任何其他中间提供商都会提供带有 API 密钥的基本 URL。',
-      tongyiBaseUrlTip:
-        '对于中国用户，不需要填写或使用 https://dashscope.aliyuncs.com/compatible-mode/v1。对于国际用户，使用 https://dashscope-intl.aliyuncs.com/compatible-mode/v1。',
+      tongyiBaseUrlTip: '对于中国用户，不需要填写',
       tongyiBaseUrlPlaceholder: '(仅国际用户需要)',
       minimaxBaseUrlTip: '仅国际用户：使用 https://api.minimax.io/v1。',
       minimaxBaseUrlPlaceholder: '(仅国际用户填写 https://api.minimax.io/v1)',
@@ -1005,19 +1116,18 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       chatModel: '语言模型',
       chatModelTip: '所有新创建的知识库都会使用默认的聊天模型。',
       ttsModel: '文本转语音模型',
-      ttsModelTip:
-        '默认的tts模型会被用于在对话过程中请求语音生成时使用。如未显示可选模型，请根据 https://ragflow.io/docs/dev/supported_models 确认你的模型供应商是否提供该模型。',
+      ttsModelTip: '默认的tts模型会被用于在对话过程中请求语音生成时使用。',
       embeddingModel: '嵌入模型',
       embeddingModelTip:
-        '所有新创建的知识库使用的默认嵌入模型。如未显示可选模型，请检查你是否在使用 RAGFlow slim 版(不含嵌入模型)；或根据 https://ragflow.io/docs/dev/supported_models 确认你的模型供应商是否提供该模型。',
+        '所有新创建的知识库使用的默认嵌入模型。如未显示可选模型，请检查你是否在使用 RAGFlow slim 版(不含嵌入模型)；',
       img2txtModel: '图片转文本模型',
       img2txtModelTip:
-        '所有新创建的知识库都将使用默认的 img2txt 模型。 它可以描述图片或视频。如未显示可选模型，请根据 https://ragflow.io/docs/dev/supported_models 确认你的模型供应商是否提供该模型。',
+        '所有新创建的知识库都将使用默认的 img2txt 模型。 它可以描述图片或视频。',
       sequence2txtModel: '语音转文本模型',
       sequence2txtModelTip:
-        '所有新创建的知识库都将使用默认的 ASR 模型。 使用此模型将语音翻译为相应的文本。如未显示可选模型，请根据 https://ragflow.io/docs/dev/supported_models 确认你的模型供应商是否提供该模型。',
+        '所有新创建的知识库都将使用默认的 ASR 模型。 使用此模型将语音翻译为相应的文本。',
       rerankModel: '重排序模型',
-      rerankModelTip: `默认的 reranking 模型。如未显示可选模型，请根据 https://ragflow.io/docs/dev/supported_models 确认你的模型供应商是否提供该模型。`,
+      rerankModelTip: `默认的 reranking 模型。`,
       workspace: '工作空间',
       upgrade: '升级',
       addLlmTitle: '添加 LLM',
@@ -1167,6 +1277,7 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
     },
     message: {
       registered: '注册成功',
+      registerDisabled: '用户注册已被禁用',
       logout: '登出成功',
       logged: '登录成功',
       pleaseSelectChunk: '请选择解析块',
@@ -1232,6 +1343,7 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       variableDescription: '变量的描述',
       defaultValue: '默认值',
       conversationVariable: '会话变量',
+      ingestionPipeline: '数据导入管道',
       recommended: '推荐',
       customerSupport: '客户支持',
       marketing: '营销',
@@ -1304,6 +1416,9 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
         4. 验证准确性和一致性。
         5. 清晰地总结最终结果。
 </instructions>`,
+      tag: '标签',
+      tagPlaceholder: '请输入标签',
+      descriptionPlaceholder: '请输入描述',
       line: '单行文本',
       paragraph: '段落文字',
       options: '选项',
@@ -1802,6 +1917,7 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       promptMessage: '提示词是必填项',
       promptTip:
         '系统提示为大模型提供任务描述、规定回复方式，以及设置其他各种要求。系统提示通常与 key （变量）合用，通过变量设置大模型的输入数据。你可以通过斜杠或者 (x) 按钮显示可用的 key。',
+      infor: '运行信息',
       knowledgeBasesTip: '选择关联的知识库，或者在下方选择包含知识库ID的变量。',
       knowledgeBaseVars: '知识库变量',
       code: '代码',
@@ -1879,6 +1995,8 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       createFromBlank: '从空白创建',
       createFromTemplate: '从模板创建',
       importJsonFile: '导入 JSON 文件',
+      ceateAgent: '智能体流程',
+      createPipeline: '数据导入管道',
       chooseAgentType: '选择智能体类型',
       parser: '解析器',
       parserDescription: '从文件中提取原始文本和结构以供下游处理。',
@@ -1897,6 +2015,17 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
         '使用 LLM 从文档块（例如摘要、分类等）中提取结构化见解。',
       outputFormat: '输出格式',
       fileFormats: '文件类型',
+      fileFormatOptions: {
+        pdf: 'PDF',
+        spreadsheet: '电子表格',
+        image: '图片',
+        email: '邮件',
+        'text&markdown': '文本与标记',
+        word: 'Word',
+        slides: 'PPTX',
+        audio: '音频',
+        video: '视频',
+      },
       fields: '字段',
       addParser: '增加解析器',
       hierarchy: '层次结构',
@@ -1918,7 +2047,7 @@ Tokenizer 会根据所选方式将内容存储为对应的数据结构。`,
       keywords: '关键词',
       questions: '问题',
       metadata: '元数据',
-      toc: 'PageIndex',
+      toc: '页面索引',
       fieldName: '结果目的地',
       prompts: {
         system: {
@@ -1970,6 +2099,20 @@ Tokenizer 会根据所选方式将内容存储为对应的数据结构。`,
       cancel: '取消',
       filenameEmbeddingWeight: '文件名嵌入权重',
       switchPromptMessage: '提示词将发生变化，请确认是否放弃已有提示词？',
+      swicthPromptMessage: '提示词将发生变化，请确认是否放弃已有提示词？',
+      imageParseMethodOptions: {
+        ocr: 'OCR',
+      },
+      tokenizerSearchMethodOptions: {
+        full_text: '全文',
+        embedding: '嵌入',
+      },
+      tokenizerFieldsOptions: {
+        text: '处理后的文本',
+        keywords: '关键词',
+        questions: '问题',
+        summary: '增强上下文',
+      },
       structuredOutput: {
         configuration: '配置',
         structuredOutput: '结构化输出',
@@ -2126,6 +2269,7 @@ Tokenizer 会根据所选方式将内容存储为对应的数据结构。`,
       japanese: '日语',
       korean: '韩语',
       vietnamese: '越南语',
+      russian: '俄语',
       bulgarian: '保加利亚语',
     },
     pagination: {
@@ -2208,6 +2352,141 @@ Tokenizer 会根据所选方式将内容存储为对应的数据结构。`,
       memoryTitle: '尚未创建记忆',
       notFoundMemory: '未查询到记忆',
       addNow: '立即添加',
+    },
+
+    admin: {
+      loginTitle: '管理员控制台',
+      title: 'RAGFlow',
+      confirm: '确认',
+      close: '关闭',
+      yes: '是',
+      no: '否',
+      delete: '删除',
+      cancel: '取消',
+      reset: '重置',
+      import: '导入',
+      description: '描述',
+      noDescription: '暂无描述',
+
+      resourceType: {
+        dataset: '知识库',
+        chat: '聊天',
+        agent: '智能体',
+        search: '搜索',
+        file: '文件',
+        team: '团队',
+        memory: '记忆',
+      },
+
+      permissionType: {
+        enable: '启用',
+        read: '读取',
+        write: '写入',
+        share: '共享',
+      },
+
+      serviceStatus: '服务状态',
+      userManagement: '用户管理',
+      sandboxSettings: '沙箱设置',
+      registrationWhitelist: '注册白名单',
+      roles: '角色',
+      monitoring: '监控',
+
+      back: '返回',
+      active: '活跃',
+      inactive: '未激活',
+      enable: '启用',
+      disable: '禁用',
+      all: '全部',
+      actions: '操作',
+      newUser: '新建用户',
+      email: '邮箱',
+      name: '名称',
+      nickname: '昵称',
+      status: '状态',
+      id: 'ID',
+      serviceType: '服务类型',
+      host: '主机',
+      port: '端口',
+
+      role: '角色',
+      user: '用户',
+      userType: '用户类型',
+      superuser: '超级用户',
+      normalUser: '普通用户',
+
+      createTime: '创建时间',
+      lastLoginTime: '上次登录时间',
+      lastUpdateTime: '上次更新时间',
+
+      isAnonymous: '是否匿名',
+      isSuperuser: '是否超级用户',
+
+      deleteUser: '删除用户',
+      deleteUserConfirmation: '确定要删除此用户吗？',
+
+      createNewUser: '创建新用户',
+      changePassword: '修改密码',
+      newPassword: '新密码',
+      confirmNewPassword: '确认新密码',
+      password: '密码',
+      confirmPassword: '确认密码',
+
+      invalidEmail: '请输入有效的邮箱地址！',
+      passwordRequired: '请输入密码！',
+      passwordMinLength: '密码长度必须超过8个字符。',
+      confirmPasswordRequired: '请确认密码！',
+      confirmPasswordDoNotMatch: '两次输入的密码不一致！',
+
+      read: '读取',
+      write: '写入',
+      share: '共享',
+      create: '创建',
+
+      extraInfo: '附加信息',
+      serviceDetail: `{{name}} 服务详情`,
+      taskExecutorDetail: '任务执行器详情',
+
+      whitelistManagement: '白名单管理',
+      exportAsExcel: '导出 Excel',
+      importFromExcel: '导入 Excel',
+      createEmail: '新建邮箱',
+      deleteEmail: '删除邮箱',
+      editEmail: '编辑邮箱',
+      deleteWhitelistEmailConfirmation:
+        '确定要从白名单中删除此邮箱吗？此操作不可撤销。',
+
+      importWhitelist: '导入白名单（Excel）',
+      importSelectExcelFile: 'Excel 文件（.xlsx）',
+      importOverwriteExistingEmails: '覆盖已有邮箱',
+      importInvalidExcelFile: '请选择有效的 Excel 文件',
+      importFileRequired: '请选择要导入的文件',
+      importFileTips: '文件必须包含名为 <code>email</code> 的单列标题。',
+
+      chunkNum: '分块数',
+      docNum: '文档数',
+      tokenNum: '已消耗 Token',
+      language: '语言',
+      createDate: '创建日期',
+      updateDate: '更新日期',
+      permission: '权限',
+
+      agentTitle: '智能体标题',
+      canvasCategory: '画布分类',
+
+      newRole: '新建角色',
+      addNewRole: '添加新角色',
+      roleName: '角色名称',
+      roleNameRequired: '角色名称为必填项',
+      resources: '资源',
+
+      editRoleDescription: '编辑角色描述',
+      deleteRole: '删除角色',
+      deleteRoleConfirmation: '确定要删除此角色吗？此操作不可撤销。',
+
+      alive: '正常',
+      timeout: '超时',
+      fail: '失败',
     },
 
     explore: {

@@ -140,20 +140,31 @@ export const useSelectParserList = (): Array<{
   label: string;
 }> => {
   const { data: tenantInfo } = useFetchTenantInfo(true);
+  const { t } = useTranslation();
 
   const parserList = useMemo(() => {
     const parserArray: Array<string> = tenantInfo?.parser_ids?.split(',') ?? [];
     const filteredArray = parserArray.filter((x) => x.trim() !== '');
 
+    const mapLabel = (value: string, fallbackLabel: string) => {
+      const key = value.trim();
+      return t(`parserLabels.${key}`, { defaultValue: fallbackLabel });
+    };
+
     if (filteredArray.length === 0) {
-      return DEFAULT_PARSERS;
+      return DEFAULT_PARSERS.map((item) => ({
+        value: item.value,
+        label: mapLabel(item.value, item.label),
+      }));
     }
 
     return filteredArray.map((x) => {
       const arr = x.split(':');
-      return { value: arr[0], label: arr[1] };
+      const value = (arr[0] ?? '').trim();
+      const fallback = (arr[1] ?? value).trim();
+      return { value, label: mapLabel(value, fallback || value) };
     });
-  }, [tenantInfo]);
+  }, [tenantInfo, t]);
 
   return parserList;
 };

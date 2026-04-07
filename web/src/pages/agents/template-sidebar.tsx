@@ -17,7 +17,7 @@ export enum MenuItemKey {
   CustomerSupport = 'Customer Support',
   Marketing = 'Marketing',
   ConsumerApp = 'Consumer App',
-  Pipeline = 'Ingestion Pipeline',
+  Pipeline = '数据导入管道',
   Other = 'Other',
 }
 const menuItems = [
