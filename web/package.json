@@ -19,6 +19,14 @@
       "prettier --write --ignore-unknown"
     ]
   },
+  "browserslist": {
+    "production": [
+      "Chrome >= 90"
+    ],
+    "development": [
+      "last 1 chrome version"
+    ]
+  },
   "overrides": {
     "@radix-ui/react-dismissable-layer": "1.1.4"
   },
@@ -156,6 +164,7 @@
     "@types/webpack-env": "^1.18.4",
     "@typescript-eslint/eslint-plugin": "^8.52.0",
     "@typescript-eslint/parser": "^8.52.0",
+    "@vitejs/plugin-legacy": "^7.2.1",
     "@vitejs/plugin-react": "^5.1.2",
     "autoprefixer": "^10.4.21",
     "cross-env": "^7.0.3",

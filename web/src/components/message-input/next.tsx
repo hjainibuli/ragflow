@@ -28,7 +28,6 @@ import {
 import * as React from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'sonner';
-import { AudioButton } from '../ui/audio-button';
 
 export type NextMessageInputOnPressEnterParameter = {
   enableThinking: boolean;
@@ -234,17 +233,22 @@ export function NextMessageInput({
             {showReasoning && (
               <Button
                 type="button"
+                size={enableThinking ? 'icon' : undefined}
                 variant="ghost"
                 className={cn(
-                  'rounded-sm h-7 focus-visible:bg-none! hover:bg-none!',
-                  {
-                    'bg-accent-primary text-white': enableThinking,
-                  },
+                  enableThinking
+                    ? 'size-7 rounded-sm'
+                    : 'h-7 rounded-sm focus-visible:bg-none! hover:bg-none!',
                 )}
+                disabled={isUploading || sendLoading}
                 onClick={handleThinkingToggle}
               >
-                <Atom />
-                <span>Thinking</span>
+                <Atom className={cn(enableThinking && 'size-3.5')} />
+                {enableThinking ? (
+                  <span className="sr-only">思考模式</span>
+                ) : (
+                  <span>思考模式</span>
+                )}
               </Button>
             )}
             {showInternet && (
@@ -269,11 +273,11 @@ export function NextMessageInput({
             </Button>
           ) : (
             <div className="flex items-center gap-3">
-              <AudioButton
+              {/* <AudioButton
                 onOk={(value) => {
                   setAudioInputValue(value);
                 }}
-              />
+              /> */}
               <Button
                 className="size-5 rounded-sm"
                 disabled={

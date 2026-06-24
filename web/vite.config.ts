@@ -1,4 +1,5 @@
 import { inspectorServer } from '@react-dev-inspector/vite-plugin';
+import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import { defineConfig, loadEnv } from 'vite';
@@ -13,6 +14,11 @@ export default defineConfig(({ mode, command }) => {
   return {
     plugins: [
       react(),
+      legacy({
+        targets: ['Chrome >= 90'],
+        modernPolyfills: true,
+        additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
+      }),
       viteStaticCopy({
         targets: [
           {
@@ -175,7 +181,6 @@ export default defineConfig(({ mode, command }) => {
       },
       sourcemap: true,
       cssCodeSplit: true,
-      target: 'es2015',
     },
     esbuild: {
       tsconfigRaw: {

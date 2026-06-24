@@ -34,7 +34,8 @@ export const buildMessageItemReference = (
   const assistantMessages = conversation.message
     ?.filter(
       (x) =>
-        x.role === MessageType.Assistant && !x.content.startsWith('**ERROR**:'), // Exclude error messages
+        x.role === MessageType.Assistant &&
+        (typeof x.content !== 'string' || !x.content.startsWith('**ERROR**:')), // Exclude error messages
     )
     .slice(1);
   const referenceIndex = assistantMessages.findIndex(
